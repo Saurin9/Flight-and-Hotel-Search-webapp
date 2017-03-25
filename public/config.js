@@ -12,6 +12,11 @@
                 controller: "SearchController",
                 controllerAs: "model"
             })
+            .when("/hotel-search", {
+                templateUrl: "views/hotels/templates/hotel-search.view.client.html",
+                controller: "HotelSearchController",
+                controllerAs: "model"
+            })
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
                 controller: "LoginController",
