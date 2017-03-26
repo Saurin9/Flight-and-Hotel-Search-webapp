@@ -1,0 +1,140 @@
+<div class="rc-no-padding rc-background-flight-search-result">
+    <!--rc-background-user-history-->
+    <nav class="nav ss-black-navbar ss-navbar-padding">
+    <div class="container-fluid">
+    <div class="row">
+    <!--<div class="col-sm-1"></div>-->
+    <!--<div class="col-xs-12 col-sm-10">-->
+    <div class="col-md-12">
+    <!--<div class="dropdown pull-right">-->
+    <!--<button class="btn dropdown-toggle ss-btn-highlight-off ss-btn-top-margin"-->
+<!--type="button" data-toggle="dropdown">-->
+    <!--<span class="glyphicon glyphicon-align-justify ss-white-font"></span>-->
+    <!--</button>-->
+    <!--<ul class="dropdown-menu" style="margin-bottom: 100px">-->
+    <!--<li><a href="#/">Search Flights</a></li>-->
+<!--<li><a href="#/profile">Profile</a></li>-->
+    <!--<li><a href="#/userHistory">History</a></li>-->
+    <!--<li><a>Notifications</a></li>-->
+    <!--<li><a href="#/">Logout</a></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+    <!--<a class="navbar-brand pull-left" href="#/">-->
+    <strong class="navbar-brand visible-xs rc-agent-notify-font-size
+wbdv-font-color-white pull-left">
+New Flight Search
+</strong>
+<strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
+    New Flight Search
+</strong>
+<strong class="navbar-brand visible-xs rc-agent-notify-font-size
+wbdv-font-color-white pull-left">
+Hotel Search
+</strong>
+<strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
+    Hotel Search
+</strong>
+<i class="fa fa-user-circle-o wbdv-banner-font visible-xs pull-right"
+aria-hidden="true"
+id = "rc-margin-for-logo-flight-search"></i>
+    <strong class="wbdv-banner-font hidden-xs pull-right"
+id = "rc-flight-search-login-margin-right">
+    Login
+    </strong>
+    </div>
+    </div>
+    </div>
+    </nav>
+
+    <div class="container-fluid">
+    <div class="rc-link-top-margin row rc-black-background text-center">
+    <div class="col-sm-1 rc-flight-search-journey-font">
+    <strong>{{model.userJourney.source}}</strong>
+</div>
+<div class="col-sm-1 rc-flight-search-journey-font">
+    <strong>{{model.userJourney.destination}}</strong>
+</div>
+<div class="col-sm-2 rc-flight-search-journey-font">
+    {{model.userJourney.departDate}}
+</div>
+<div class="col-sm-2 rc-flight-search-journey-font">
+    {{model.userJourney.returnDate}}
+</div>
+<div class="col-sm-1 rc-flight-search-journey-font">
+    {{model.userJourney.noOfAdults}} A
+</div>
+<div class="col-sm-1 rc-flight-search-journey-font">
+    {{model.userJourney.noOfChildren}} C
+</div>
+<div class="col-sm-2 rc-flight-search-journey-font">
+    {{model.userJourney.cabinClass}}
+</div>
+<div class="col-sm-2">
+    <a href="#" class="btn btn-block btn-primary rc-flight-modify-button">
+    <strong>Modify</strong>
+    </a>
+    </div>
+    </div>
+
+    <div ng-repeat="flight in model.flightSearchResults.results">
+    <div id="outbound-short" class="rc-link-top-margin row rc-black-background">
+    <table class="rc-flight-search-journey-font text-center rc-table-width">
+    <tr>
+    <td class="rc-table-column-width">{{model.userJourney.source}}</td>
+<td class="rc-table-column-width">{{model.userJourney.destination}}</td>
+<td class="rc-table-column-width">{{flight.itineraries[0].outbound.flights.length - 1}} Stops</td>
+<td class="rc-table-column-width" rowspan="2">USD {{flight.fare.total_price}}</td>
+</tr>
+<tr>
+<td>{{flight.itineraries[0].outbound.flights[0].departs_at}}</td>
+<td>{{flight.itineraries[0].outbound.flights[flight.itineraries[0].outbound.flights.length - 1].arrives_at}}</td>
+<td>{{flight.itineraries[0].outbound.flights[0].booking_info.seats_remaining}} Seats Remaining</td>
+</tr>
+<tr>
+<td colspan="4" class="rc-flight-detail-button-padding" data-toggle="collapse" data-target={{connectingFlights}}>
+<!--data-toggle="collapse" data-target="#outbound-detail"-->
+    <a class="btn btn-block btn-primary rc-flight-details-button">
+    <strong>D e t a i l s</strong>
+</a>
+</td>
+</tr>
+</table>
+</div>
+<div id={{connectingFlights}}
+class="collapse rc-flight-search-journey-font rc-link-top-margin row rc-black-background"
+ng-repeat="connectingFlights in flight.itineraries[0].outbound.flights">
+    <table class="text-center rc-table-width">
+    <tr>
+    <td class="rc-table-column-width">
+    {{connectingFlights.origin.airport}}
+</td>
+<td class="rc-table-column-width">
+    {{connectingFlights.destination.airport}}
+</td>
+<td class="rc-table-column-width">
+    {{connectingFlights.departs_at}}
+</td>
+<td class="rc-table-column-width">
+    {{connectingFlights.arrives_at}}
+</td>
+</tr>
+<tr>
+<td>
+{{connectingFlights.operating_airline}}
+</td>
+<td>
+{{connectingFlights.flight_number}}
+</td>
+<td>
+{{connectingFlights.booking_info.travel_class}}
+</td>
+<td>
+{{connectingFlights.booking_info.seats_remaining}}
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>

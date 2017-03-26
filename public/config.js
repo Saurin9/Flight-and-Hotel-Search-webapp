@@ -12,7 +12,7 @@
                 controller: "SearchController",
                 controllerAs: "model"
             })
-            .when("/hotel-search", {
+            .when("/hotelSearch", {
                 templateUrl: "views/hotels/templates/hotel-search.view.client.html",
                 controller: "HotelSearchController",
                 controllerAs: "model"
@@ -51,6 +51,12 @@
                 templateUrl: "views/user/templates/user.notification.view.client.html",
                 controller: "UserNotificationController",
                 controllerAs: "model"
-            });
+            })
+            .when("/hotelSearchResults" , {
+                templateUrl: "views/hotels/templates/hotel-search.results.view.client.html",
+                // controller: "HotelSearchResultsController",
+                controllerAs: "model"
+            })
+        ;
     }
 })();
