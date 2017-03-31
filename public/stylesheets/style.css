@@ -36,6 +36,20 @@ a:hover, a:focus {
     margin-right: 5px;
 }
 
+.rc-background-register {
+    background: url('/images/pexels-photo-325703.jpeg');
+    background-size: cover;
+    opacity: 0.9;
+    /*background-position: 100%;*/
+    /*background:repeat;*/
+    position: absolute;
+    /*height: 100vh;*/
+    top:0;
+    left:0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
 .rc-background-flight-search-result {
     /*background: url('/images/pexels-photo-115109.jpeg');*/
     /*background: url('/images/flight-sky-clouds-fly.jpg');*/
@@ -123,7 +137,7 @@ a:hover, a:focus {
 
 .rc-white-background {
     background-color: white;
-    opacity: 0.95;
+    opacity: 1;
     padding-top: 2px;
     padding-bottom: 2px;
 }
@@ -137,6 +151,11 @@ a:hover, a:focus {
 
 .rc-font-color-black {
     color: black;
+}
+
+.rc-flight-logo {
+    font-size: 19px;
+    color: #0f0f0f;
 }
 
 .wbdv-margin-top-login {
@@ -188,7 +207,8 @@ a:hover, a:focus {
 
 .rc-flight-modify-button {
     border-radius: 15px;
-    background-color: #F89406;
+    font-size: 15px;
+    background-color: #F9690E;
 }
 
 .rc-flight-details-button {
@@ -207,6 +227,16 @@ a:hover, a:focus {
 
 .rc-flight-search-journey-font {
     font-size: 18px;
+    color: white;
+}
+
+.rc-flight-price-font {
+    font-size: 25px;
+    color: white;
+}
+
+.rc-flight-price-small-font {
+    font-size: 23px;
     color: white;
 }
 
@@ -241,7 +271,7 @@ a:hover, a:focus {
     z-index: 1;
     background-color: black;
     height:auto;
-    opacity: 0.9;
+    opacity: 1;
     margin-bottom: 30px;
 }
 
@@ -256,7 +286,7 @@ a:hover, a:focus {
 }
 
 .wbdv-font-family {
-    font-family: Sansita;
+  font-family: Sansita;
 }
 
 .wbdv-left-right-margin {
@@ -293,7 +323,14 @@ body img {
     background-color: darkgray;
 }
 
+.rc-user-history-list-background {
+    background-color: #0f0f0f;
+    opacity: 0.9;
+}
 
+.rc-user-history-top-margin {
+    margin-top: 10px;
+}
 
 .rc-link-top-margin {
     margin-top: 30px;
@@ -322,10 +359,24 @@ body img {
     font-size: 15px;
 }
 
+#clearFilterMessageButton .btn-default {
+    background-color: coral;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+}
+
+
 #sendMessageButton .form-control {
     border-radius: 12px;
     font-size: 15px;
 }
+
+#deleteMessageButton .form-control {
+    border-radius: 12px;
+    font-size: 15px;
+}
+
 
 .rc-small-top-margin {
     margin-top: 3px;
@@ -340,7 +391,7 @@ body img {
 }
 
 a {
-    color: black;
+  color: black;
 }
 
 #loginform .form-control {
@@ -409,7 +460,7 @@ a {
 
 .ss-black-bg {
     background-color: black;
-    /*opacity: 0.8;*/
+    opacity: 0.9;
 }
 
 .ss-whitefont{
@@ -481,7 +532,6 @@ a.hover {
 }
 
 .ss-edit-pencil{
-    padding-top: px;
     font-size: 32px;
     /*color: black;*/
 }

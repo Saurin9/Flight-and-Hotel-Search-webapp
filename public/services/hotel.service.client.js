@@ -7,7 +7,7 @@
 
         var ss_API_KEY = "5NPbEYxDOHBtMEMVCrAYRZuqqOVygdgv";
         var hotel_urlbase = "https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=" + ss_API_KEY +
-                            "&location=LOCATION_REQ&check_in=CHECKIN_REQ&check_out=CHECKOUT_REQ"
+            "&location=LOCATION_REQ&check_in=CHECKIN_REQ&check_out=CHECKOUT_REQ"
 
         var api = {
             "getHotels": getHotels
@@ -25,12 +25,5 @@
 
         }
 
-        // function getHotelSearchUrl (hotelBookingReq){
-        //     var hotelSearchUrl = hotel_urlbase.replace("LOCATION_REQ", hotelBookingReq.location)
-        //             .replace("CHECKIN_REQ", hotelBookingReq.checkinDate.toISOString().substring(0,10))
-        //             .replace("CHECKOUT_REQ",hotelBookingReq.checkoutDate.toISOString().substring(0,10));
-        //     return hotelSearchUrl;
-        //
-        // }
     }
 })();

@@ -5,26 +5,42 @@
         <div class="row">
             <div class="col-sm-1"></div>
             <div class="col-xs-12 col-sm-10">
-                <a class="navbar-brand pull-right" href="#/login">
+                <a ng-if="!model.isLoggedIn" class="navbar-brand pull-right" href="#/login">
                     <i class="fa fa-user-circle-o visible-xs" aria-hidden="true"></i>
                     <strong class="wbdv-font-family hidden-xs rc-font-color-black">My Account</strong>
                 </a>
-                <a class="navbar-brand pull-right" href="#/register">
+                <a ng-if="model.isLoggedIn" class="navbar-brand pull-right" ng-click="model.goToHistory()">
+                    <i class="fa fa-user-circle-o visible-xs" aria-hidden="true"></i>
+                    <strong class="wbdv-font-family hidden-xs rc-font-color-black">My Account</strong>
+                </a>
+                <a ng-if="!model.isLoggedIn" class="navbar-brand pull-right" ng-click="model.goToRegister('USER')">
                     <i class="fa fa-user-plus visible-xs" aria-hidden="true"></i>
                     <strong class="wbdv-font-family hidden-xs rc-font-color-black">Register</strong>
                 </a>
-                <a class="navbar-brand pull-left" href="#/">
+
+                <strong class="navbar-brand rc-flight-logo">
                     <i class="fa fa-plane visible-xs" aria-hidden="true"></i>
-                    <strong class="wbdv-font-family hidden-xs rc-black-banner">
+                    </strong>
+                    <strong class="wbdv-font-family hidden-xs rc-black-banner navbar-brand">
                         Flight Search
                     </strong>
+                <a href="#/hotelSearch">
+                    <strong class="wbdv-font-family hidden-xs rc-black-banner navbar-brand">
+                        Hotel Search
+                    </strong>
                 </a>
+
             </div>
             <div class="col-sm-1"></div>
         </div>
     </div>
 </nav>
-
+    <div ng-show="model.message" class="alert alert-success" role="alert">
+        <h3 class="rc-font-color-black">{{model.message}}</h3>
+    </div>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        <h3 class="rc-font-color-black">{{model.error}}</h3>
+    </div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-1"></div>
@@ -40,7 +56,9 @@
                                        type="text"
                                        class="form-control"
                                        id="from"
-                                       placeholder="From">
+                                       placeholder="From"
+                                       list="cityFrom">
+                                <datalist id="cityFrom"></datalist>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -50,7 +68,9 @@
                                        type="text"
                                        class="form-control"
                                        id="to"
-                                       placeholder="To">
+                                       placeholder="To"
+                                       list="cityTo">
+                                <datalist id="cityTo"></datalist>
                             </div>
                         </div>
                     </div>
@@ -71,27 +91,48 @@
                                    id="return"
                                    placeholder="Return Date">
                         </div>
-                        <div class="col-sm-3 form-group">
+                        <div class="col-sm-2 form-group">
                             <label class="wbdv-font-color-white" for="adults">Adults</label>
                             <input ng-model="model.flight.noOfAdults"
                                    type="number"
+                                   min="0"
+                                   value="1"
                                    class="form-control"
                                    id="adults"
                                    placeholder="Number of Adults">
                         </div>
-                        <div class="col-sm-3 form-group">
+                        <div class="col-sm-2 form-group">
                             <label class="wbdv-font-color-white" for="child">Children</label>
                             <input ng-model="model.flight.noOfChildren"
                                    type="number"
+                                   min="0"
+                                   value="0"
                                    class="form-control"
                                    id="child"
                                    placeholder="Number of Children">
+                        </div>
+                        <div class="col-sm-2 form-group">
+                            <label class="wbdv-font-color-white" for="flightClass">Class</label>
+                            <div class="dropdown" id="flightClass">
+                                <select class="btn btn-block selectpicker"
+                                ng-model="model.flight.selectedClass">
+                                    <option value="ECONOMY" selected>ECONOMY</option>
+                                    <option value="FIRST">FIRST</option>
+                                    <option value="BUSINESS">BUSINESS</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div id="searchButton" class="form-group">
                         <a class="btn btn-block wbdv-button"
                            ng-click="model.searchFlight(model.flight)">
                             Search
+                        </a>
+                    </div>
+                    <div ng-if="model.isLoggedIn" id="setUpAlertButton" class="form-group">
+                        <a class="btn btn-block wbdv-button"
+                           ng-click="model.setUpAlert(model.flight)">
+                            Set Up Alert
                         </a>
                     </div>
                 <!--<div class="row wbdv-margin-top">-->
@@ -106,30 +147,23 @@
             </div>
         <div class="col-sm-1"></div>
     </div>
-    <div class="row page1">
+    <div ng-if="!model.isLoggedIn" class="row page1">
         <div class="col-sm-1"></div>
         <div class="col-xs-12 col-sm-10">
             <div class="col-md-4 rc-white-background hidden-xs">
-                <div class="text-center">
-                    <a class="rc-font-color-black" href="#">
+                <div class="text-center rc-font-color-black">
+                    <!--<a class="rc-font-color-black">-->
                         <h3>
                             Get the Best Deals from our partners
                         </h3>
                         <div class="rc-deal-image visible-lg visible-md"></div>
                         <!--Designed by freepik.com-->
-                    </a>
+                    <!--</a>-->
                 </div>
-            </div>
-            <div class="col-md-4 visible-xs rc-white-background">
-                <a class="rc-font-color-black text-center" href="#">
-                    <h4>
-                        Get the Best Deals from our partners
-                    </h4>
-                </a>
             </div>
             <div class="col-md-4 rc-white-background hidden-xs">
                 <div class="text-center">
-                    <a class="rc-font-color-black" href="#">
+                    <a class="rc-font-color-black" ng-click="model.goToRegister('USER')">
                         <h3>
                             Become a member to avail best deals
                         </h3>
@@ -137,9 +171,16 @@
                     </a>
                 </div>
             </div>
+            <div class="col-md-4 visible-xs rc-white-background">
+                <a class="rc-font-color-black text-center" ng-click="model.goToRegister('USER')">
+                    <h4 class="rc-font-color-black text-center">
+                        Become a member to avail best deals
+                    </h4>
+                </a>
+            </div>
             <div class="col-md-4 rc-white-background hidden-xs">
                 <div class="text-center">
-                    <a class="rc-font-color-black" href="#">
+                    <a class="rc-font-color-black" ng-click="model.goToRegister('AGENT')">
                         <h3 class="hidden-xs">
                             Become a partner and grow with us!
                         </h3>
@@ -148,7 +189,7 @@
                 </div>
             </div>
             <div class="col-md-4 visible-xs rc-white-background">
-                <a class="rc-font-color-black text-center" href="#">
+                <a class="rc-font-color-black text-center" ng-click="model.goToRegister('AGENT')">
                     <h4>
                         Become a partner and grow with us!
                     </h4>
@@ -157,15 +198,61 @@
         </div>
         <div class="col-sm-1"></div>
     </div>
-
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].departs_at}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].origin.airport}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].origin.terminal}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].destination.airport}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].destination.terminal}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].marketing_airline}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].booking_info.travel_class}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].booking_info.seats_remaining}}
 </div>
 
 </div>
+
+<!--<script>-->
+
+    <!--// Get the <datalist> and <input> elements.-->
+    <!--var dataList = document.getElementById('cityFrom');-->
+    <!--var input = document.getElementById('from');-->
+
+    <!--// Create a new XMLHttpRequest.-->
+    <!--var request = new XMLHttpRequest();-->
+
+    <!--// Handle state changes for the request.-->
+    <!--request.onreadystatechange = function(response) {-->
+        <!--if (request.readyState === 4) {-->
+            <!--if (request.status === 200) {-->
+                <!--// Parse the JSON-->
+                <!--var jsonOptions = JSON.parse(request.responseText);-->
+
+                <!--console.log(jsonOptions);-->
+                <!--console.log(jsonOptions.response);-->
+
+                <!--var allCities = jsonOptions.response;-->
+                <!--for (var cityInfo in allCities) {-->
+                    <!--console.log(allCities[cityInfo].code +" Name "+allCities[cityInfo].name);-->
+                    <!--var option = document.createElement('option');-->
+                    <!--option.value = allCities[cityInfo].name;-->
+                    <!--dataList.appendChild(option);-->
+                <!--}-->
+
+                <!--// Loop over the JSON array.-->
+<!--//                jsonOptions.forEach(function(item) {-->
+<!--//                    // Create a new <option> element.-->
+<!--//                    var option = document.createElement('option');-->
+<!--//                    // Set the value using the item in the JSON array.-->
+<!--//                    option.value = item;-->
+<!--//                    // Add the <option> element to the <datalist>.-->
+<!--//                    dataList.appendChild(option);-->
+<!--//                });-->
+
+                <!--// Update the placeholder text.-->
+                <!--input.placeholder = "e.g. datalist";-->
+            <!--} else {-->
+                <!--// An error occured :(-->
+                <!--input.placeholder = "Couldn't load datalist options :(";-->
+            <!--}-->
+        <!--}-->
+    <!--};-->
+
+    <!--// Update the placeholder text.-->
+    <!--input.placeholder = "Loading options...";-->
+
+    <!--// Set up and make the request.-->
+    <!--request.open('GET', 'https://crossorigin.me/https://iatacodes.org/api/v6/cities?api_key=7cf86b00-61f2-47df-a5d0-d56b5bf819bb', true);-->
+<!--//    request.open('GET', 'http://cors.io/?u=http://iatacodes.org/api/v6/autocomplete?api_key=7cf86b00-61f2-47df-a5d0-d56b5bf819bb&query=boston', true);-->
+    <!--request.send();-->
+<!--</script>-->

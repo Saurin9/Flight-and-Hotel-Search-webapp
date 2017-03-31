@@ -3,21 +3,132 @@
         .module("FlightSearchApp")
         .controller("SearchController", SearchController);
     
-    function SearchController($location, FlightService) {
+    function SearchController($routeParams, $location, FlightService, UserService) {
         var vm = this;
+        var userId = $routeParams['uid'];
 
         vm.searchFlight = searchFlight;
+        vm.setUpAlert = setUpAlert;
+        vm.goToHistory = goToHistory;
+        vm.goToRegister = goToRegister;
+
+        function init() {
+            UserService
+                .findUserById(userId)
+                .success(function (user) {
+                    // vm.user = user;
+                    vm.userType = user.userType;
+                });
+
+            if (userId) {
+                vm.isLoggedIn = true;
+            } else {
+                vm.isLoggedIn = false;
+            }
+
+
+            // Get the <datalist> and <input> elements.
+            var dataList = document.getElementById('cityFrom');
+            var dataList2 = document.getElementById('cityTo');
+            var input = document.getElementById('from');
+            var input2 = document.getElementById('to');
+
+            // Create a new XMLHttpRequest.
+            var request = new XMLHttpRequest();
+
+            // Handle state changes for the request.
+            request.onreadystatechange = function(response) {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        // Parse the JSON
+                        var jsonOptions = JSON.parse(request.responseText);
+
+                        vm.allCities = jsonOptions.response;
+                        for (var cityInfo in vm.allCities) {
+                            var option = document.createElement('option');
+                            option.value = vm.allCities[cityInfo].name;
+                            var option2 = document.createElement('option');
+                            option2.value = vm.allCities[cityInfo].name;
+                           dataList.appendChild(option);
+                           dataList2.appendChild(option2);
+                        }
+
+                        // Update the placeholder text.
+                        input.placeholder = "Boston";
+                        input2.placeholder = "Mumbai";
+                    } else {
+                        // An error occured :(
+                        input.placeholder = "Couldn't load cities";
+                        input2.placeholder = "Couldn't load cities";
+                    }
+                }
+            };
+
+            // Update the placeholder text.
+            input.placeholder = "Loading options...";
+            input2.placeholder = "Loading options...";
+
+            // Set up and make the request.
+            request.open('GET', 'https://crossorigin.me/https://iatacodes.org/api/v6/cities?api_key=7cf86b00-61f2-47df-a5d0-d56b5bf819bb', true);
+//    request.open('GET', 'http://cors.io/?u=http://iatacodes.org/api/v6/autocomplete?api_key=7cf86b00-61f2-47df-a5d0-d56b5bf819bb&query=boston', true);
+            request.send();
+
+        }
+        init();
+
+        function goToRegister(userType) {
+            $location.url("/register/" + userType);
+        }
+
+        function goToHistory() {
+            if (vm.userType === "USER") {
+                $location.url("/user/"+ userId +"/userHistory");
+            } else if (vm.userType === "AGENT") {
+                $location.url("/user/"+ userId +"/agentHistory");
+            }
+        }
+
+        function setUpAlert(journey) {
+            if (journey.source && journey.destination && journey.departDate) {
+                FlightService
+                    .setUpAlert(journey, userId)
+                    .then(
+                        function (alert) {
+                            vm.message = "Alert has been setup for your journey";
+                        },
+                        function (err) {
+                            vm.error = "Could not setup alert for this journey. Please try again";
+                        }
+                    );
+            } else {
+                vm.error = "Please fill in data for creating alert";
+            }
+        }
 
         function searchFlight(journey) {
-            FlightService
-                .getFlights(journey)
-                .success(function (flights) {
-                    vm.flightData = flights;
-                    //console.log(flights.results[0].itineraries[0].outbound.flights[0].arrives_at);
-                })
-                .error(function (err) {
-                    vm.err = err;
-                });
+            var searchUrl;
+            for (var cityInfo in vm.allCities) {
+                if (vm.allCities[cityInfo].name == journey.source) {
+                    journey.source = vm.allCities[cityInfo].code;
+                }
+                if (vm.allCities[cityInfo].name == journey.destination) {
+                    journey.destination = vm.allCities[cityInfo].code;
+                }
+            }
+            if (typeof journey.returnDate != "undefined") {
+                searchUrl = "/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
+                    +"/DEPART/"+journey.departDate.toISOString().substring(0, 10)
+                    +"/RETURN/"+journey.returnDate.toISOString().substring(0, 10)
+                    +"/ADULTS/"+journey.noOfAdults+"/CHILD/"+
+                    journey.noOfChildren+"/CLASS/"+journey.selectedClass;
+            } else {
+                searchUrl = "/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
+                    +"/DEPART/"+journey.departDate.toISOString().substring(0, 10)
+                    +"/RETURN/"+0
+                    +"/ADULTS/"+journey.noOfAdults+"/CHILD/"+
+                    journey.noOfChildren+"/CLASS/"+journey.selectedClass;
+            }
+            $location.url(searchUrl);
         }
     }
 })();

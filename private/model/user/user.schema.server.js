@@ -1,6 +1,5 @@
 module.exports = function() {
     var mongoose = require("mongoose");
-    //var WebsiteSchema = require("../website/website.schema.server")();
 
     var UserSchema = mongoose.Schema({
         username: String,
@@ -9,7 +8,14 @@ module.exports = function() {
         lastName: String,
         email: String,
         phone: String,
-        // websites: [{type: mongoose.Schema.Types.ObjectId, ref:'WebsiteModel'}],
+        userType: {
+            type: String,
+            enum: ['USER', 'AGENT', 'ADMIN', 'HOTELOWNER'],
+            default: 'USER'
+        },
+        organization : String,
+        hotels: [{type: mongoose.Schema.Types.ObjectId, ref:'HotelModel'}],
+        messages: [{type: mongoose.Schema.Types.ObjectId, ref:'MessageModel'}],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "userDatabase"});
 
