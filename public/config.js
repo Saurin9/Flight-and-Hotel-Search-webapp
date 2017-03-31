@@ -52,9 +52,9 @@
                 controller: "UserNotificationController",
                 controllerAs: "model"
             })
-            .when("/hotelSearchResults" , {
+            .when("/hotel/SearchResults/location/:loc/checkin/:cin/checkout/:cout" , {
                 templateUrl: "views/hotels/templates/hotel-search.results.view.client.html",
-                // controller: "HotelSearchResultsController",
+                controller: "HotelSearchResultsController",
                 controllerAs: "model"
             })
         ;

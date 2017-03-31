@@ -3,21 +3,21 @@
         .module("FlightSearchApp")
         .controller("HotelSearchController", HotelSearchController);
 
-    function HotelSearchController($location, FlightService) {
+    function HotelSearchController($location, HotelService) {
         var vm = this;
+        vm.gotoHotelResultsPage = gotoHotelResultsPage;
 
-        vm.searchFlight = searchFlight;
-
-        function searchFlight(journey) {
-            FlightService
-                .getFlights(journey)
-                .success(function (flights) {
-                    vm.flightData = flights;
-                    //console.log(flights.results[0].itineraries[0].outbound.flights[0].arrives_at);
-                })
-                .error(function (err) {
-                    vm.err = err;
-                });
+        function gotoHotelResultsPage(hotelBookingReq) {
+            $location.url('/hotel/SearchResults/location/' + hotelBookingReq.location + '/checkin/'
+                + hotelBookingReq.checkinDate.toISOString().substring(0,10) + '/checkout/' + hotelBookingReq.checkoutDate.toISOString().substring(0,10));
+            // HotelService
+                // .getHotelSearchUrl(hotelBookingReq)
+                // .success(function (hotelUrl) {
+                //     console.log(hotelUrl);
+                // })
+                // .error(function (err) {
+                //     vm.err = err;
+                // });
         }
     }
 })();

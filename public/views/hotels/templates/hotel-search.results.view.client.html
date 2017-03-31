@@ -57,42 +57,101 @@
             </div>
         </div>
 
-        <div class="row ss-black-bg ss-top-margin">
-            <div class="col-xs-1"> </div>
-            <div class="col-xs-7 ss-black-bg ss-white-font ss-top-margin ss-div-padding">
-                <div>
-                    <strong class="ss-hotel-name-font-size">Winthrop Beach Inn And Suites Boston Log</strong>
+        <div ng-repeat="hotel in model.hotels.results" class="ss-black-bg ss-top-margin">
+            <div class="row ss-black-bg">
+                <div class="col-xs-1"> </div>
+
+                <div class="col-xs-6 ss-black-bg ss-white-font ss-top-margin ss-div-padding">
+                    <div>
+                        <!--<strong class="ss-hotel-name-font-size">Winthrop Beach Inn And Suites Boston Log</strong>-->
+                        <strong class="ss-hotel-name-font-size">{{hotel.property_name}}</strong>
+                    </div>
+                    <div>
+                        <!--<strong>Address:</strong> 312 Shirley Street, Winthrop, MA 02152-->
+                        <strong>Address:</strong> {{hotel.address.line1}},&nbsp;
+                        {{hotel.address.city}},&nbsp;
+                        {{hotel.address.region}},&nbsp;
+                        {{hotel.address.postal_code}}
+                    </div>
                 </div>
-                <div>
-                    <strong>Address:</strong> 312 Shirley Street, Winthrop, MA 02152
-                </div>
-                <div>
-                    Description: BEST AVAILABLE RATE, LRG STUDIO KING BD KITCHENETTE DINING TABLE 55, TV FREE WIFI CABLE BREAKFAST
-                </div>
-            </div>
-            <div class="col-xs-4 ss-top-margin ss-div-padding text-center ss-price-center">
-                <span class="label label-warning">1200 USD</span>
-            </div>
-            <!--<div class="col-xs-1"> </div>-->
-        </div>
-        <div class="text-center ss-black-bg row ss-top-bottom-padding">
-            <a data-toggle="collapse" data-target="#hotelDetails">
-                <div>
-                    <span class="text-center ss-arrow-bottom-padding">
-                        <i class="fa fa-chevron-down ss-white-font text-center" aria-hidden="true"></i>
-                    </span>
-                </div>
-            </a>
-        </div>
-        <div class="row ss-black-bg ss-white-font">
-            <div class="col-xs-1"></div>
-            <div class="col-xs-10">
-                <div id="hotelDetails" class="collapse ss-top-bottom-padding">
-                    Contact: 8573089616
-                    <br>
-                    Phone: 4445454446
+
+                <div class="col-xs-5 ss-top-margin ss-div-padding text-center ss-price-center">
+                    <!--<span class="label label-warning">1200 USD</span>-->
+                    <span class="label label-warning">{{hotel.total_price.amount}}&nbsp;USD</span>
                 </div>
             </div>
-            <div class="col-xs-1"></div>
+            <div class="text-center ss-black-bg row ss-top-bottom-padding">
+                <a data-toggle="collapse" data-target="#hotelDetails{{$index}}">
+                    <div>
+                        <span class="text-center ss-arrow-bottom-padding">
+                            <i class="fa fa-chevron-down ss-white-font text-center" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <div id="hotelDetails{{$index}}" class="collapse ss-black-bg ss-white-font">
+                <div class="row ss-black-bg">
+                    <div class="col-xs-4 col-sm-2"><strong class="pull-right">Description:</strong> </div>
+
+                    <div class="col-xs-7 col-sm-7">
+                        <span  ng-repeat="amenity in hotel.amenities">
+                            {{amenity.description}}, &nbsp;
+                        </span>
+                    </div>
+
+                    <div class="col-xs-1 col-sm-3"></div>
+                </div>
+
+                <div class="row ss-black-bg ss-collapsible-div-bottom-padding">
+                    <div class="col-xs-4 col-sm-2"><strong class="pull-right">Contact:</strong> </div>
+
+                    <div class="col-xs-7 col-sm-7">
+                        <div  ng-repeat="contact in hotel.contacts">
+                            {{contact.type}}: &nbsp; {{contact.detail}}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-1 col-sm-3"></div>
+                </div>
+
+            </div>
+
         </div>
+
+        <!--<div class="text-center ss-black-bg row ss-top-bottom-padding">-->
+            <!--&lt;!&ndash;<a data-toggle="collapse" data-target="#hotelDetails">&ndash;&gt;-->
+            <!--<a>-->
+                <!--<div>-->
+                    <!--<span class="text-center ss-arrow-bottom-padding">-->
+                        <!--<i class="fa fa-chevron-down ss-white-font text-center" aria-hidden="true"></i>-->
+                    <!--</span>-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div class="row ss-black-bg ss-white-font">-->
+            <!--<div class="col-xs-1"></div>-->
+            <!--<div class="col-xs-10">-->
+                <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;Description: BEST AVAILABLE RATE, LRG STUDIO KING BD KITCHENETTE DINING TABLE 55, TV FREE WIFI CABLE BREAKFAST&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;<strong>Description:</strong>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div id="hotelDetails" class="collapse ss-top-bottom-padding">&ndash;&gt;-->
+                <!--<div  class="ss-top-bottom-padding">-->
+                    <!--&lt;!&ndash;Contact: 8573089616&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--&lt;!&ndash;Phone: 4445454446&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ul class="list-group list-unstyled">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li ng-repeat="amenity in hotel.amenities" class="list-group-item">&ndash;&gt;-->
+                        <!--<div class="ng-repeat=" ng-repeat="amenity in hotel.amenities">-->
+                            <!--{{amenity.description}}jojiojoi-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-1"></div>-->
+        <!--</div>-->
 </div>

@@ -76,49 +76,44 @@
                             <!--</div>-->
                         </div>
                         <div class="row">
-                            <div class="col-sm-3 form-group">
-                                <label class="wbdv-font-color-white" for="checkin">Check in</label>
-                                <input ng-model="model.hotelBooking.checkinDate"
-                                       type="date"
-                                       class="form-control"
-                                       id="checkin">
-                            </div>
-                            <div class="col-sm-3 form-group">
-                                <label class="wbdv-font-color-white" for="checkout">Check out</label>
-                                <input ng-model="model.hotelBooking.checkoutDate"
-                                       type="date"
-                                       class="form-control"
-                                       id="checkout">
-                            </div>
-                            <div class="col-sm-3 form-group">
+                            <div class="col-sm-4 form-group">
                                 <label class="wbdv-font-color-white" for="location">Location (IATA code)</label>
-                                <input ng-model="model.hotelBooking.location"
+                                <input ng-model="model.hotelBookingReq.location"
                                        class="form-control"
                                        placeholder="IATA Code of desired location"
                                        id="location">
                             </div>
-                            <div class="col-sm-3 form-group">
-                                <label class="wbdv-font-color-white" for="maxRate">Maximum Rate</label>
-                                <input ng-model="model.hotelBooking.maxRate"
-                                       type="number"
+
+                            <div class="col-sm-4 form-group">
+                                <label class="wbdv-font-color-white" for="checkin">Check in</label>
+                                <input ng-model="model.hotelBookingReq.checkinDate"
+                                       type="date"
                                        class="form-control"
-                                       placeholder="Maximum rate"
-                                       id="maxRate">
+                                       id="checkin">
                             </div>
+                            <div class="col-sm-4 form-group">
+                                <label class="wbdv-font-color-white" for="checkout">Check out</label>
+                                <input ng-model="model.hotelBookingReq.checkoutDate"
+                                       type="date"
+                                       class="form-control"
+                                       id="checkout">
+                            </div>
+
+                            <!--<div class="col-sm-3 form-group">-->
+                                <!--<label class="wbdv-font-color-white" for="maxRate">Maximum Rate</label>-->
+                                <!--<input ng-model="model.hotelBookingReq.maxRate"-->
+                                       <!--type="number"-->
+                                       <!--class="form-control"-->
+                                       <!--placeholder="Maximum rate"-->
+                                       <!--id="maxRate">-->
+                            <!--</div>-->
                         </div>
                         <div id="searchButton" class="form-group">
                             <a class="btn btn-block wbdv-button"
-                               ng-click="model.searchHotels(model.hotelBooking)">
+                               ng-click="model.gotoHotelResultsPage(model.hotelBookingReq)">
                                 Search
                             </a>
                         </div>
-                        <!--<div class="row wbdv-margin-top">-->
-                        <!--<div class="col-sm-12">-->
-                        <!--<input type="button"-->
-                        <!--class="form-control wbdv-button"-->
-                        <!--id="search"-->
-                        <!--value="Search">-->
-                        <!--</div>-->
                     </form>
                 </div>
             </div>
