@@ -17,7 +17,11 @@
                 .findUserByCredentials(user.username, user.password)
                 .success(function (user) {
                     if(user) {
-                        $location.url("/user/"+user._id+"/flightSearch");
+                        if(user.userType === "HOTELOWNER"){
+                            $location.url('/user-hotelowner/' + user._id);
+                        }
+                        else
+                            $location.url("/user/"+user._id+"/flightSearch");
                     } else {
                         vm.error = "User not found";
                     }

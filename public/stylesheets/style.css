@@ -568,3 +568,30 @@ a.hover {
 .ss-collapsible-div-bottom-padding{
     padding-bottom: 5px;
 }
+
+.ss-inputarea-top-margin {
+    margin-top: 5px;
+}
+
+.ss-top-margin-form{
+    margin-top: 9px;
+}
+
+.ss-no-left-padding{
+    padding-left: 0px;
+}
+
+.ss-no-right-padding{
+    padding-right: 0px;
+}
+
+.ss-cross-font-size{
+    font-size: 20px !important;
+    padding: 5px;
+}
+
+.ss-pencil-font-size{
+    font-size: 14px !important;
+    padding-left: 20px;
+}
+

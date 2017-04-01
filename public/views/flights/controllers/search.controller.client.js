@@ -39,7 +39,7 @@
             // Handle state changes for the request.
             request.onreadystatechange = function(response) {
                 if (request.readyState === 4) {
-                    if (request.status === 200) {
+                       if (request.status === 200) {
                         // Parse the JSON
                         var jsonOptions = JSON.parse(request.responseText);
 

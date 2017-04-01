@@ -10,7 +10,9 @@
             "&location=LOCATION_REQ&check_in=CHECKIN_REQ&check_out=CHECKOUT_REQ"
 
         var api = {
-            "getHotels": getHotels
+            "getHotels": getHotels,
+            "addHotel": addHotel,
+            "findHotelsByOwner": findHotelsByOwner,
             // "getHotelSearchUrl": getHotelSearchUrl
         };
         return api;
@@ -23,6 +25,14 @@
 
             return $http.get(hotelSearchUrl);
 
+        }
+
+        function addHotel(hotel, userId) {
+            return $http.post('/user-hotelowner/' + userId + '/hotel', hotel);
+        }
+
+        function findHotelsByOwner (userId) {
+            return $http.get("/user-hotelowner/" + userId + "/hotel");
         }
 
     }

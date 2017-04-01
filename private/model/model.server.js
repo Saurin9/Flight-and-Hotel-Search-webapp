@@ -15,14 +15,18 @@ module.exports = function () {
 
    var userModel = require("./user/user.model.server.js")();
    var messageModel = require("./message/message.model.server.js")();
+    var hotelModel = require("./hotel/hotel.model.server.js")();
+
 
     var model = {
         userModel : userModel,
-        messageModel : messageModel
+        messageModel : messageModel,
+        hotelModel : hotelModel
     };
 
     userModel.setModel(model);
     messageModel.setModel(model);
+    hotelModel.setModel(model);
 
     return model;
 };
