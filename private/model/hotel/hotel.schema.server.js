@@ -12,6 +12,8 @@ module.exports = function() {
         phone: String,
         fax : String,
         amenities: String,
+        available_from: String,
+        available_till: String,
         dateCreated: {type: Date, default: Date.now}
 
     }, {collection: "hotelDatabase"});

@@ -9,7 +9,9 @@ module.exports = function () {
     var api = {
         setModel: setModel,
         addHotel: addHotel,
-        findHotelByUser: findHotelByUser
+        findHotelByUser: findHotelByUser,
+        updateHotelAvailability: updateHotelAvailability,
+        deleteHotel: deleteHotel
 
     };
     return api;
@@ -41,6 +43,34 @@ module.exports = function () {
                     deferred.abort(err);
                 } else {
                     deferred.resolve(hotels);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function updateHotelAvailability (hotelId, editedDetails) {
+        var deferred = Q.defer();
+        HotelModel
+            .update({"_id": hotelId}, {available_from: editedDetails.available_from,
+                "available_till": editedDetails.available_till,
+                "total_price": editedDetails.total_price}, function (err, hotel) {
+                if(err){
+                    deferred.abort(err);
+                } else {
+                    deferred.resolve(hotel);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function deleteHotel (hotelId) {
+        var deferred = Q.defer();
+        HotelModel
+            .remove({_id: hotelId}, function (err, hotel) {
+                if(err){
+                    deferred.abort(err);
+                } else{
+                    deferred.resolve(hotel);
                 }
             });
         return deferred.promise;

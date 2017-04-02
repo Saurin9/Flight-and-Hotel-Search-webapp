@@ -71,6 +71,14 @@
 
             <div class="col-sm-9">
 
+                <div class="alert alert-danger text-center" ng-show="model.error">
+                    {{model.error}}
+                </div>
+
+                <div class="alert alert-success text-center" ng-show="model.message">
+                    {{model.message}}
+                </div>
+                
                 <div ng-repeat="hotel in model.hotels" class="ss-black-bg ss-top-margin">
                     <!--<div class="row ss-white-font">-->
                         <!--<span class="ss-white-font"> <i class="fa fa-times pull-right" aria-hidden="true"></i></span>-->
@@ -94,7 +102,14 @@
                         </div>
 
                         <div class="col-xs-5 ss-top-margin  ss-div-padding text-center ss-price-center">
-                            <i class="fa fa-times pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>
+                            <!--<i class="fa fa-times pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>-->
+                            <a ng-click="model.deleteHotel(hotel._id)">
+                                <div>
+                                    <span class="text-center ss-arrow-bottom-padding">
+                                        <i class="fa fa-times pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </a>
                             <a data-toggle="collapse" data-target="#hotelDetails{{$index}}">
                                 <div>
                                     <span class="text-center ss-arrow-bottom-padding">
@@ -159,21 +174,21 @@
                             <!--<div>-->
                                 <div class="col-sm-4">
                                     <label for="availableFrom" class="rc-form-font-size">Available From:</label>
-                                    <input ng-model="model.user.password"
+                                    <input ng-model="model.editedDetails.available_from"
                                            type="date"
                                            class="form-control"
                                            id="availableFrom">
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="availableTill" class="rc-form-font-size">Available Till:</label>
-                                    <input ng-model="model.user.password"
+                                    <input ng-model="model.editedDetails.available_till"
                                            type="date"
                                            class="form-control"
                                            id="availableTill">
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="totalCost" class="rc-form-font-size">Total Cost:</label>
-                                    <input ng-model="model.user.password"
+                                    <input ng-model="model.editedDetails.total_price"
                                            type="text"
                                            class="form-control"
                                            id="totalCost">
@@ -182,12 +197,11 @@
 
                             <div class="col-sm-12 ss-top-margin">
                                 <a class="btn wbdv-button btn-block"
-                                   ng-click="">
+                                   ng-click="model.updateHotelAvailibility(model.editedDetails, hotel._id)">
                                     Update Hotel Details
                                 </a>
                             </div>
                         </div>
-
 
                     </div>
 
