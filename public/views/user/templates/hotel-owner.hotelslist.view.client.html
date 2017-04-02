@@ -87,21 +87,22 @@
 
                     <div class="row ss-black-bg">
 
-                        <div class="col-xs-1"> </div>
+                        <div class="col-sm-1"> </div>
 
-                        <div class="col-xs-6 ss-black-bg ss-white-font ss-top-margin ss-div-padding">
+                        <div class="col-xs-7 col-sm-7 ss-black-bg ss-white-font ss-top-margin ss-div-padding">
                             <div>
                                 <strong class="ss-hotel-name-font-size">{{hotel.property_name}}</strong>
                             </div>
                             <div>
-                                <strong>Address: &nbsp;</strong> {{hotel.addressline1}},&nbsp;
+                                <strong class="ss-font-class1">Address: &nbsp;</strong>
+                                <span class="ss-font-class2"> {{hotel.addressline1}},&nbsp;
                                 {{hotel.city}},&nbsp;
                                 {{hotel.region}},&nbsp;
-                                {{hotel.postal_code}}
+                                {{hotel.postal_code}} </span>
                             </div>
                         </div>
 
-                        <div class="col-xs-5 ss-top-margin  ss-div-padding text-center ss-price-center">
+                        <div class="col-xs-5 col-sm-4 ss-top-margin  ss-div-padding text-center ss-price-center">
                             <!--<i class="fa fa-times pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>-->
                             <a ng-click="model.deleteHotel(hotel._id)">
                                 <div>
@@ -123,16 +124,16 @@
 
                     <div class="ss-black-bg ss-white-font">
                         <div class="row ss-black-bg">
-                            <div class="col-xs-4 col-sm-2"><strong class="pull-right">Amenities:</strong> </div>
-                            <div class="col-xs-7 col-sm-7">
+                            <div class="col-xs-4 col-sm-2"><strong class="pull-right ss-font-class1">Amenities:</strong> </div>
+                            <div class="col-xs-7 col-sm-7 ss-font-class2">
                                 {{hotel.amenities}} &nbsp;
                             </div>
                             <div class="col-xs-1 col-sm-3"></div>
                         </div>
 
                         <div class="row ss-black-bg ">
-                            <div class="col-xs-4 col-sm-2"><strong class="pull-right">Contact:</strong> </div>
-                            <div class="col-xs-7 col-sm-7">
+                            <div class="col-xs-4 col-sm-2"><strong class="pull-right ss-font-class1">Contact:</strong> </div>
+                            <div class="col-xs-7 col-sm-7 ss-font-class2">
                                 PHONE: &nbsp; {{hotel.phone}}
                             </div>
                             <div class="col-xs-1 col-sm-3"></div>
@@ -140,58 +141,40 @@
 
                         <div class="row ss-black-bg ">
                             <div class="col-xs-4 col-sm-2"></div>
-                            <div class="col-xs-7 col-sm-7">
+                            <div class="col-xs-7 col-sm-7 ss-font-class2">
                                 FAX: &nbsp; {{hotel.fax}}
                             </div>
                             <div class="col-xs-1 col-sm-3"></div>
                         </div>
 
-                        <div class="row ss-black-bg ">
-                            <div class="col-xs-4 col-sm-2"><strong class="pull-right">Availability:</strong> </div>
-                            <div class="col-xs-7 col-sm-7">
-                                FROM: &nbsp;
-                            </div>
-                            <div class="col-xs-1 col-sm-3"></div>
-                        </div>
-
-                        <div class="row ss-black-bg ">
-                            <div class="col-xs-4 col-sm-2"></div>
-                            <div class="col-xs-7 col-sm-7">
-                                TO: &nbsp;
-                            </div>
-                            <div class="col-xs-1 col-sm-3"></div>
-                        </div>
-
                         <div class="row ss-black-bg ss-collapsible-div-bottom-padding">
-                            <div class="col-xs-4 col-sm-2"><strong class="pull-right">Total Price:</strong> </div>
-                            <div class="col-xs-7 col-sm-7">
+                            <div class="col-xs-4 col-sm-2"><strong class="pull-right ss-font-class1">Total Price:</strong> </div>
+                            <div class="col-xs-7 col-sm-7 ss-font-class2">
                                 {{hotel.total_price}} USD
                             </div>
                             <div class="col-xs-1 col-sm-3"></div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-3 text-center">
+                        <div class="row ss-font-class1">
+                            <div class="col-sm-2 col-xs-1"></div>
+                            <div class="col-sm-3 col-xs-5 text-center">
                                 Checkin Dates
                             </div>
-                            <div class="col-sm-3 text-center">
+                            <div class="col-sm-3 col-xs-5 text-center">
                                 Checkout Dates
                             </div>
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-2"></div>
+                            <div class="col-sm-4 col-xs-1"></div>
                         </div>
 
-                        <div ng-repeat="booking in hotel.BookedDates" class="row ss-black-bg ss-white-font">
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-3 text-center">
+                        <div ng-repeat="booking in hotel.BookedDates" class="row ss-black-bg ss-white-font ss-font-class2">
+                            <div class="col-sm-2 col-xs-1"></div>
+                            <div class="col-sm-3 col-xs-5 text-center">
                                 {{booking.checkIn}}
                             </div>
-                            <div class="col-sm-3 text-center">
+                            <div class="col-sm-3 col-xs-5 text-center">
                                 {{booking.checkOut}}
                             </div>
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-2"></div>
+                            <div class="col-sm-4 col-xs-1"></div>
                         </div>
 
                         <div id="hotelDetails{{$index}}" class="collapse row ss-black-bg">

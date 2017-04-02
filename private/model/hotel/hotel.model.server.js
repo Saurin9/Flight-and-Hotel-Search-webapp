@@ -33,6 +33,8 @@ module.exports = function () {
                 }else{
                     var availableHotels = [];
                     for(var i=0; i<hotels.length; i++){
+                        if(hotels[i].city != query.location)
+                            continue;
                         var available = true;
                         for(var j=0; j<hotels[i].BookedDates.length; j++){
                             var date = hotels[i].BookedDates[j];
