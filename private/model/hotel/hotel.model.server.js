@@ -24,13 +24,38 @@ module.exports = function () {
 
     function findHotels (query) {
         var deferred = Q.defer();
+        console.log(query);
 
         HotelModel
             .find({},function (err, hotels) {
                 if(err){
                     deferred.abort(err);
                 }else{
-                    deferred.resolve(hotels);
+                    var availableHotels = [];
+                    for(var i=0; i<hotels.length; i++){
+                        var available = true;
+                        for(var j=0; j<hotels[i].BookedDates.length; j++){
+                            var date = hotels[i].BookedDates[j];
+                            var a = query.checkinDate.split("-");
+                            var b = query.checkoutDate.split("-");
+                            var a2 = new Date(a[0], a[1] - 1, a[2]);
+                            var b2 = new Date(b[0], b[1] - 1, b[2]);
+                            var c = date.checkIn.split("-");
+                            var c2 = new Date(c[0], c[1] - 1, c[2]);
+                            var d = date.checkOut.split("-");
+                            var d2 = new Date(d[0], d[1] - 1, d[2]);
+                            if (b < c || a > d) {
+                                continue;
+                            } else {
+                                available = false;
+                                break;
+                            }
+                        }
+                        if (available) {
+                            availableHotels.push(hotels[i]);
+                        }
+                    }
+                    deferred.resolve(availableHotels);
                 }
             });
         return deferred.promise;

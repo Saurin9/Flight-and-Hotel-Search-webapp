@@ -11,8 +11,8 @@ module.exports = function() {
         phone: String,
         fax : String,
         amenities: String,
-        BookedDates : { checkIn: String,
-                        checkOut: String},
+        BookedDates : [{ checkIn: String,
+                        checkOut: String}],
         total_price: String,
         dateCreated: {type: Date, default: Date.now}
 

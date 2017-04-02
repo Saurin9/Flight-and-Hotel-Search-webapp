@@ -6,14 +6,14 @@
     function HotelSearchResultsController($routeParams, HotelService) {
         var vm = this;
 
-        var hotelLoc = $routeParams['loc'];
-        var cinDate = $routeParams['cin'];
-        var coutDate = $routeParams['cout'];
+        vm.hotelLoc = $routeParams['loc'];
+        vm.cinDate = $routeParams['cin'];
+        vm.coutDate = $routeParams['cout'];
 
 
 
         function init() {
-            vm.hotelReq = {"location": hotelLoc, "checkinDate": cinDate, "checkoutDate": coutDate};
+            vm.hotelReq = {"location": vm.hotelLoc, "checkinDate": vm.cinDate, "checkoutDate": vm.coutDate};
 
 
 
