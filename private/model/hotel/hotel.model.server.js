@@ -11,7 +11,8 @@ module.exports = function () {
         addHotel: addHotel,
         findHotelByUser: findHotelByUser,
         updateHotelAvailability: updateHotelAvailability,
-        deleteHotel: deleteHotel
+        deleteHotel: deleteHotel,
+        findHotels: findHotels
 
     };
     return api;
@@ -19,6 +20,21 @@ module.exports = function () {
 
     function setModel(_model) {
         model = _model;
+    }
+
+    function findHotels (query) {
+        var deferred = Q.defer();
+
+        HotelModel
+            .find({},function (err, hotels) {
+                if(err){
+                    deferred.abort(err);
+                }else{
+                    deferred.resolve(hotels);
+                }
+            });
+        return deferred.promise;
+
     }
 
     function addHotel (userId, hotel) {
@@ -48,12 +64,10 @@ module.exports = function () {
         return deferred.promise;
     }
 
-    function updateHotelAvailability (hotelId, editedDetails) {
+    function updateHotelAvailability (hotelId, bookingDates) {
         var deferred = Q.defer();
         HotelModel
-            .update({"_id": hotelId}, {available_from: editedDetails.available_from,
-                "available_till": editedDetails.available_till,
-                "total_price": editedDetails.total_price}, function (err, hotel) {
+            .update({"_id": hotelId}, {$push : {BookedDates : bookingDates}}, function (err, hotel) {
                 if(err){
                     deferred.abort(err);
                 } else {

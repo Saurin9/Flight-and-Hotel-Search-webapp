@@ -78,7 +78,7 @@
                 <div class="alert alert-success text-center" ng-show="model.message">
                     {{model.message}}
                 </div>
-                
+
                 <div ng-repeat="hotel in model.hotels" class="ss-black-bg ss-top-margin">
                     <!--<div class="row ss-white-font">-->
                         <!--<span class="ss-white-font"> <i class="fa fa-times pull-right" aria-hidden="true"></i></span>-->
@@ -165,42 +165,70 @@
                         <div class="row ss-black-bg ss-collapsible-div-bottom-padding">
                             <div class="col-xs-4 col-sm-2"><strong class="pull-right">Total Price:</strong> </div>
                             <div class="col-xs-7 col-sm-7">
-                                12154 USD
+                                {{hotel.total_price}} USD
                             </div>
                             <div class="col-xs-1 col-sm-3"></div>
                         </div>
 
-                        <div id="hotelDetails{{$index}}" class="collapse row ss-black-bg">
-                            <!--<div>-->
-                                <div class="col-sm-4">
-                                    <label for="availableFrom" class="rc-form-font-size">Available From:</label>
-                                    <input ng-model="model.editedDetails.available_from"
-                                           type="date"
-                                           class="form-control"
-                                           id="availableFrom">
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="availableTill" class="rc-form-font-size">Available Till:</label>
-                                    <input ng-model="model.editedDetails.available_till"
-                                           type="date"
-                                           class="form-control"
-                                           id="availableTill">
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="totalCost" class="rc-form-font-size">Total Cost:</label>
-                                    <input ng-model="model.editedDetails.total_price"
-                                           type="text"
-                                           class="form-control"
-                                           id="totalCost">
-                                </div>
-                            <!--</div>-->
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-3 text-center">
+                                Checkin Dates
+                            </div>
+                            <div class="col-sm-3 text-center">
+                                Checkout Dates
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                        </div>
 
-                            <div class="col-sm-12 ss-top-margin">
+                        <div ng-repeat="booking in hotel.BookedDates" class="row ss-black-bg ss-white-font">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-3 text-center">
+                                {{booking.checkIn}}
+                            </div>
+                            <div class="col-sm-3 text-center">
+                                {{booking.checkOut}}
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                        </div>
+
+                        <div id="hotelDetails{{$index}}" class="collapse row ss-black-bg">
+
+                            <div class="col-sm-2"></div>
+
+                            <div id="CheckinDate" class="col-sm-3">
+                                 <input ng-model="model.editedDetails.checkIn"
+                                        type="date"
+                                        class="form-control"
+                                        id="checkIn0">
+                            </div>
+
+                            <div id="CheckoutDate" class="col-sm-3">
+                                <!--<label for="availableTill" class="rc-form-font-size">Available Till:</label>-->
+                                <input ng-model="model.editedDetails.checkOut"
+                                       type="date"
+                                       class="form-control"
+                                       id="checkOut0">
+                            </div>
+
+                            <div class="col-sm-3">
                                 <a class="btn wbdv-button btn-block"
                                    ng-click="model.updateHotelAvailibility(model.editedDetails, hotel._id)">
                                     Update Hotel Details
                                 </a>
                             </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <!--<div class="col-sm-12 ss-top-margin">-->
+                                <!--<a class="btn wbdv-button btn-block"-->
+                                   <!--ng-click="model.updateHotelAvailibility(model.editedDetails, hotel._id)">-->
+                                    <!--Update Hotel Details-->
+                                <!--</a>-->
+                            <!--</div>-->
+
                         </div>
 
                     </div>

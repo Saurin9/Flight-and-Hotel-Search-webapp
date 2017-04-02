@@ -57,7 +57,72 @@
             </div>
         </div>
 
-        <div ng-repeat="hotel in model.hotels.results" class="ss-black-bg ss-top-margin">
+        <div ng-repeat="hotel in model.registeredHotels" class="ss-black-bg ss-top-margin">
+            <div class="row ss-black-bg">
+                <div class="col-xs-1"> </div>
+
+                <div class="col-xs-6 ss-black-bg ss-white-font ss-top-margin ss-div-padding">
+                    <div>
+                        <!--<strong class="ss-hotels-name-font-size">Winthrop Beach Inn And Suites Boston Log</strong>-->
+                        <strong class="ss-hotel-name-font-size">{{hotel.property_name}}</strong>
+                    </div>
+                    <div>
+                        <!--<strong>Address:</strong> 312 Shirley Street, Winthrop, MA 02152-->
+                        <strong>Address:</strong> {{hotel.line1}},&nbsp;
+                        {{hotel.city}},&nbsp;
+                        {{hotel.region}},&nbsp;
+                        {{hotel.postal_code}}
+                    </div>
+                </div>
+
+                <div class="col-xs-5 ss-top-margin ss-div-padding text-center ss-price-center">
+                    <!--<span class="label label-warning">1200 USD</span>-->
+                    <span class="label label-warning">{{hotel.total_price}}&nbsp;USD</span>
+                </div>
+            </div>
+            <div class="text-center ss-black-bg row ss-top-bottom-padding">
+                <a data-toggle="collapse" data-target="#hotelDetails_registered{{$index}}">
+                    <div>
+                        <span class="text-center ss-arrow-bottom-padding">
+                            <i class="fa fa-chevron-down ss-white-font text-center" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <div id="hotelDetails_registered{{$index}}" class="collapse ss-black-bg ss-white-font">
+                <div class="row ss-black-bg">
+                    <div class="col-xs-4 col-sm-2"><strong class="pull-right">Amenities:</strong> </div>
+
+                    <div class="col-xs-7 col-sm-7">
+                        <!--<span  ng-repeat="amenity in hotel.amenities">-->
+                            {{hotel.amenities}}, &nbsp;
+                        <!--</span>-->
+                    </div>
+
+                    <div class="col-xs-1 col-sm-3"></div>
+                </div>
+
+                <div class="row ss-black-bg ss-collapsible-div-bottom-padding">
+                    <div class="col-xs-4 col-sm-2"><strong class="pull-right">Contact:</strong> </div>
+
+                    <div class="col-xs-7 col-sm-7">
+                        <div>
+                            PHONE: &nbsp; {{hotel.phone}}
+                        </div>
+                        <div>
+                            FAX: &nbsp; {{hotel.fax}}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-1 col-sm-3"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div ng-repeat="hotel in model.apiHotels.results" class="ss-black-bg ss-top-margin">
             <div class="row ss-black-bg">
                 <div class="col-xs-1"> </div>
 

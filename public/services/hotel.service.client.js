@@ -14,10 +14,15 @@
             "addHotel": addHotel,
             "findHotelsByOwner": findHotelsByOwner,
             "updateHotelAvailibility": updateHotelAvailibility,
-            "deleteHotel": deleteHotel
+            "deleteHotel": deleteHotel,
+            "getRegisteredHotels" : getRegisteredHotels
             // "getHotelSearchUrl": getHotelSearchUrl
         };
         return api;
+
+        function getRegisteredHotels(hotelBookingReq) {
+            return  $http.post('/api/searchHotel/', hotelBookingReq);
+        }
 
 
         function getHotels (hotelBookingReq) {
@@ -26,6 +31,25 @@
                 .replace("CHECKOUT_REQ",hotelBookingReq.checkoutDate);
 
             return $http.get(hotelSearchUrl);
+            // console.log(hotelBookingReq);
+
+            // var registeredHotels;
+            // var temp1;
+            // var allHotelResults = {apiHotels : [],registeredHotels : []};
+            //
+            //
+            // $http.get(hotelSearchUrl).success(function (hotels) {
+            //     allHotelResults.apiHotels = hotels.results;
+            //     console.log(allHotelResults);
+            //     $http.post('/api/searchHotel/', hotelBookingReq).success(function (hotels){
+            //         allHotelResults.registeredHotels = hotels;
+            //         console.log(allHotelResults);
+            //         return allHotelResults;
+            //     })
+            //         .error(function (err) {
+            //             return allHotelResults;
+            //         });
+            // });
 
         }
 
@@ -37,9 +61,8 @@
             return $http.get("/api/user-hotelowner/" + userId + "/hotel");
         }
 
-        function updateHotelAvailibility (editedDetails, hotelId) {
-            console.log(editedDetails);
-            return $http.put('/api/hotel/' + hotelId, editedDetails);
+        function updateHotelAvailibility (bookingDates, hotelId) {
+            return $http.put('/api/hotel/' + hotelId, bookingDates);
         }
 
         function deleteHotel (hotelId) {
