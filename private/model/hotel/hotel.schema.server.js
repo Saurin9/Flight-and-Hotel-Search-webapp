@@ -12,7 +12,7 @@ module.exports = function() {
         fax : String,
         amenities: String,
         BookedDates : [{ checkIn: String,
-                        checkOut: String}],
+            checkOut: String}],
         total_price: String,
         dateCreated: {type: Date, default: Date.now}
 

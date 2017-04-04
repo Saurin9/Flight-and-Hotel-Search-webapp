@@ -23,7 +23,7 @@
         function goToHotelsList() {
             $location.url('/user-hotelowner/' + userId +'/hotel');
         }
-        
+
         function addHotel(newhotel) {
             HotelService
                 .addHotel(newhotel, userId)

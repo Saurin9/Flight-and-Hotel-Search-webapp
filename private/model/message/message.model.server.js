@@ -17,9 +17,24 @@ module.exports = function () {
         getAllNotifications : getAllNotifications,
         getAgentHistory : getAgentHistory,
         deleteFromAgentHistory : deleteFromAgentHistory,
-        deleteUserNotification : deleteUserNotification
+        deleteUserNotification : deleteUserNotification,
+        updateMessageAfterAgentDeletion : updateMessageAfterAgentDeletion
     };
     return api;
+
+    function updateMessageAfterAgentDeletion(alertId, notVisibleAgent, agentRespondedArray) {
+        var deferred = Q.defer();
+        MessageModel
+            .update({_id : alertId}, {$set : {NotVisibleForAgents : notVisibleAgent,
+                AgentsResponded : agentRespondedArray}}, function (err, status) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(status);
+            }
+        });
+        return deferred.promise;
+    }
 
     function deleteUserNotification(notificationId, agentId) {
         var deferred = Q.defer();

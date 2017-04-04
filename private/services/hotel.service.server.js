@@ -12,11 +12,11 @@ module.exports = function (app, model) {
             .hotelModel
             .findHotels(query)
             .then(function (hotels) {
-                res.json(hotels);
-            },
-            function (err) {
-                res.sendStatus(400);
-            });
+                    res.json(hotels);
+                },
+                function (err) {
+                    res.sendStatus(400);
+                });
     }
 
     function addHotel (req, res) {
@@ -84,4 +84,3 @@ module.exports = function (app, model) {
 
 
 };
-

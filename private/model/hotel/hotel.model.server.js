@@ -16,7 +16,7 @@ module.exports = function () {
 
     };
     return api;
-    
+
 
     function setModel(_model) {
         model = _model;

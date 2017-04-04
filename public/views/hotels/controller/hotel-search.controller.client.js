@@ -15,7 +15,6 @@
         }
 
         function goToOwnerRegisterPage (userType) {
-            console.log(userType);
             $location.url("/register/" + userType);
         }
     }

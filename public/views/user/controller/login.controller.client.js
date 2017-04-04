@@ -17,11 +17,13 @@
                 .findUserByCredentials(user.username, user.password)
                 .success(function (user) {
                     if(user) {
-                        if(user.userType === "HOTELOWNER"){
+                        if (user.userType === "ADMIN") {
+                            $location.url("/user/"+user._id+"/adminProfile");
+                        } else if (user.userType === "HOTELOWNER") {
                             $location.url('/user-hotelowner/' + user._id);
-                        }
-                        else
+                        } else {
                             $location.url("/user/"+user._id+"/flightSearch");
+                        }
                     } else {
                         vm.error = "User not found";
                     }
