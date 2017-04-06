@@ -15,15 +15,25 @@
             "findHotelsByOwner": findHotelsByOwner,
             "updateHotelAvailibility": updateHotelAvailibility,
             "deleteHotel": deleteHotel,
-            "getRegisteredHotels" : getRegisteredHotels
+            "getRegisteredHotels" : getRegisteredHotels,
+            "findHotelById": findHotelById,
+            "updateHotel": updateHotel
             // "getHotelSearchUrl": getHotelSearchUrl
         };
         return api;
+
+        function findHotelById (hotelId) {
+            return $http.get('/api/hotel/' + hotelId);
+        }
 
         function getRegisteredHotels(hotelBookingReq) {
             return  $http.post('/api/searchHotel/', hotelBookingReq);
         }
 
+
+        function updateHotel (hotelId, hotel) {
+            return $http.put('/api/hotel/' + hotelId, hotel);
+        }
 
         function getHotels (hotelBookingReq) {
             var hotelSearchUrl = hotel_urlbase.replace("LOCATION_REQ", hotelBookingReq.location)
@@ -43,7 +53,7 @@
         }
 
         function updateHotelAvailibility (bookingDates, hotelId) {
-            return $http.put('/api/hotel/' + hotelId, bookingDates);
+            return $http.put('/api/hotel/' + hotelId + '/updateAvailability', bookingDates);
         }
 
         function deleteHotel (hotelId) {

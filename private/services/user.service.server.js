@@ -1,11 +1,28 @@
 module.exports = function (app, model) {
 
+    app.get("/api/user/securityquestion", findSecurityQuestionByUsername);
     app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
     app.post("/api/user", createUser);
     app.get("/api/allUsers", findAllUsers);
+
+
+    function findSecurityQuestionByUsername (req, res) {
+        var username = req.query.username;
+        model
+            .userModel
+            .findSecurityQuestionByUsername(username)
+            .then(
+                function (securityQuestion) {
+                    res.send(securityQuestion);
+                },
+                function (err) {
+                    res.sendStatus(400);
+                }
+            );
+    }
 
     function deleteUser(req, res) {
         var userId = req.params.userId;
@@ -84,10 +101,18 @@ module.exports = function (app, model) {
     }
 
     function findUser(req, res) {
-        if(req.query.username && req.query.password) {
+        console.log(req.query.username);
+        console.log(req.query.password);
+        console.log(req.query.passwordRecoveryAnswer);
+        if(req.query.username && !typeof req.query.password==='undefined') {
             findUserByCredential(req, res);
         } else {
-            findUserByUsername(req, res);
+            if (req.query.username && req.query.passwordRecoveryAnswer){
+                findUserByRecoveryCredentials(req,res);
+            }
+            else {
+                findUserByUsername(req, res);
+            }
         }
     }
 
@@ -125,5 +150,23 @@ module.exports = function (app, model) {
                 }
             );
     }
+
+    function findUserByRecoveryCredentials(req, res) {
+        var username = req.query.username;
+        var passwordRecoveryAnswer = req.query.passwordRecoveryAnswer;
+        model
+            .userModel
+            .findUserByRecoveryCredentials(username, passwordRecoveryAnswer)
+            .then(
+                function (user) {
+                    console.log("hello");
+                    res.send(user);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
+
 
 };

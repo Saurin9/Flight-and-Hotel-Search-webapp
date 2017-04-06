@@ -490,10 +490,10 @@ a {
     background-color: black;
     /*height: 500px;*/
     opacity: 0.8;
-    /*position: relative;*/
     /*background-size: cover;*/
     min-height: 100%;
     /*min-width: 100%;*/
+    position: fixed;
 }
 
 .ss-black-bg {
@@ -641,4 +641,8 @@ a.hover {
     font-size: 15px;
 }
 
-
+.ss-wbdv-button {
+    background-color: green;
+       font-size: 1.2em;
+    color: white;
+}

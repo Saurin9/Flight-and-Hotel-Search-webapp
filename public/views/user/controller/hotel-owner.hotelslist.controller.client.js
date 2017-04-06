@@ -12,13 +12,14 @@
         vm.updateHotelAvailibility = updateHotelAvailibility;
         vm.deleteHotel = deleteHotel;
         vm.bookHotelDates = bookHotelDates;
+        vm.gotoEditHotelPage = gotoEditHotelPage;
 
         function init() {
             HotelService
                 .findHotelsByOwner(userId)
                 .success(function (hotels) {
                     vm.hotels = hotels;
-                    console.log(hotels);
+                    // console.log(hotels);
                 });
             vm.bookingDates = [];
             vm.counter = 0;
@@ -32,6 +33,10 @@
 
         function goToHotelOwnerProfile () {
             $location.url('/user-hotelowner/' + userId);
+        }
+
+        function gotoEditHotelPage (hotelId) {
+            $location.url('/user-hotelowner/' + userId + '/hotel/' + hotelId);
         }
 
         function updateHotelAvailibility (editedDetails, hotelId) {

@@ -11,12 +11,15 @@ module.exports = function () {
         findUserByUsername : findUserByUsername,
         findUserById: findUserById,
         findUserByCredentials: findUserByCredentials,
+        findUserByRecoveryCredentials: findUserByRecoveryCredentials,
         createUser : createUser,
         updateUser : updateUser,
         finAllUsers : finAllUsers,
-        deleteUser : deleteUser
+        deleteUser : deleteUser,
+        findSecurityQuestionByUsername: findSecurityQuestionByUsername
     };
     return api;
+
 
     function deleteUser(userId) {
         var deferred = Q.defer();
@@ -184,12 +187,42 @@ module.exports = function () {
 
     function findUserByCredentials(username, password) {
         var deferred = Q.defer();
+        console.log('Previous');
         UserModel
             .findOne({"username": username, "password": password}, function (err, user) {
                 if(err) {
                     deferred.reject(err);
                 } else {
                     deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function findUserByRecoveryCredentials(username, passwordRecoveryAnswer) {
+        var deferred = Q.defer();
+        console.log('Here');
+        UserModel
+            .findOne({"username": username, "passwordRecoveryAnswer": passwordRecoveryAnswer}, function (err, user) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function findSecurityQuestionByUsername (username) {
+        var deferred = Q.defer();
+
+        UserModel
+            .findOne({"username": username}, function (err, user) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    // console.log(user);
+                    deferred.resolve(user.passwordRecoveryQuestion);
                 }
             });
         return deferred.promise;
