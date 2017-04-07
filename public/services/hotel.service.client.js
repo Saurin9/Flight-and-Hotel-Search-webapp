@@ -10,6 +10,7 @@
             "&location=LOCATION_REQ&check_in=CHECKIN_REQ&check_out=CHECKOUT_REQ"
 
         var api = {
+            "findAllHotels" : findAllHotels,
             "getHotels": getHotels,
             "addHotel": addHotel,
             "findHotelsByOwner": findHotelsByOwner,
@@ -26,10 +27,13 @@
             return $http.get('/api/hotel/' + hotelId);
         }
 
+        function findAllHotels() {
+            return $http.get('/api/allHotels');
+        }
+
         function getRegisteredHotels(hotelBookingReq) {
             return  $http.post('/api/searchHotel/', hotelBookingReq);
         }
-
 
         function updateHotel (hotelId, hotel) {
             return $http.put('/api/hotel/' + hotelId, hotel);

@@ -11,15 +11,42 @@ module.exports = function () {
         findUserByUsername : findUserByUsername,
         findUserById: findUserById,
         findUserByCredentials: findUserByCredentials,
-        findUserByRecoveryCredentials: findUserByRecoveryCredentials,
         createUser : createUser,
         updateUser : updateUser,
         finAllUsers : finAllUsers,
         deleteUser : deleteUser,
+        findUserByRecoveryCredentials: findUserByRecoveryCredentials,
         findSecurityQuestionByUsername: findSecurityQuestionByUsername
     };
     return api;
 
+    function findUserByRecoveryCredentials(username, passwordRecoveryAnswer) {
+        var deferred = Q.defer();
+        UserModel
+            .findOne({"username": username, "passwordRecoveryAnswer": passwordRecoveryAnswer}, function (err, user) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function findSecurityQuestionByUsername (username) {
+        var deferred = Q.defer();
+
+        UserModel
+            .findOne({"username": username}, function (err, user) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    // console.log(user);
+                    deferred.resolve(user.passwordRecoveryQuestion);
+                }
+            });
+        return deferred.promise;
+    }
 
     function deleteUser(userId) {
         var deferred = Q.defer();
@@ -102,12 +129,48 @@ module.exports = function () {
                                                 deferred.resolve(userId);
                                             }
                                         });
-
                                 },
                                 function (err) {
                                     deferred.reject(err);
                                 }
                             )
+                    } else if (user.userType === "HOTELOWNER") {
+                        // find all hotels belonging to this user
+                        // delete all hotels
+                        // delete user
+                        model
+                            .hotelModel
+                            .findHotelByUser(userId)
+                            .then(
+                                function (hotels) {
+                                    for (var i = 0; i < hotels.length ; i++) {
+                                        model
+                                            .hotelModel
+                                            .deleteHotel(hotels[i]._id)
+                                            .then(
+                                                function (status) {
+
+                                                },
+                                                function (err) {
+                                                    deferred.reject(err);
+                                                }
+                                            )
+                                    }
+                                    UserModel
+                                        .remove({_id : userId}, function (err, users) {
+                                            if (err) {
+                                                deferred.reject(err);
+                                            } else {
+                                                deferred.resolve(userId);
+                                            }
+                                        });
+                                },
+                                function (err) {
+                                    deferred.reject(err);
+                                }
+                            )
+
+
                     }
                 },
                 function (err) {
@@ -187,42 +250,12 @@ module.exports = function () {
 
     function findUserByCredentials(username, password) {
         var deferred = Q.defer();
-        console.log('Previous');
         UserModel
             .findOne({"username": username, "password": password}, function (err, user) {
                 if(err) {
                     deferred.reject(err);
                 } else {
                     deferred.resolve(user);
-                }
-            });
-        return deferred.promise;
-    }
-
-    function findUserByRecoveryCredentials(username, passwordRecoveryAnswer) {
-        var deferred = Q.defer();
-        console.log('Here');
-        UserModel
-            .findOne({"username": username, "passwordRecoveryAnswer": passwordRecoveryAnswer}, function (err, user) {
-                if(err) {
-                    deferred.reject(err);
-                } else {
-                    deferred.resolve(user);
-                }
-            });
-        return deferred.promise;
-    }
-
-    function findSecurityQuestionByUsername (username) {
-        var deferred = Q.defer();
-
-        UserModel
-            .findOne({"username": username}, function (err, user) {
-                if(err) {
-                    deferred.reject(err);
-                } else {
-                    // console.log(user);
-                    deferred.resolve(user.passwordRecoveryQuestion);
                 }
             });
         return deferred.promise;

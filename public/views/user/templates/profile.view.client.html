@@ -1,6 +1,5 @@
 <div class="rc-no-padding rc-background-profile">
-<nav class="nav ss-black-navbar ss-navbar-padding" style="opacity: 1; position: relative;
-z-index: 1000;">
+<nav class="nav ss-black-navbar ss-navbar-padding rc-navbar-style navbar-fixed-top">
     <div class="container-fluid">
         <div class="row">
             <!--<div class="col-sm-1"></div>-->
@@ -17,8 +16,8 @@ z-index: 1000;">
                     </a>
                     <ul class="dropdown-menu rc-dropdown-small-font">
                         <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
-                        <li><a class="">Profile</a></li>
                         <li><a ng-click="model.goToHistory()" class="">History</a></li>
+                        <li><a ng-click="model.goToNotifications()">Notifications</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#/" class="">Logout</a></li>
                     </ul>
@@ -35,10 +34,10 @@ z-index: 1000;">
     </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid rc-top-margin-page">
     <div class="row ">
         <!--<div class="col-sm-1"></div>-->
-        <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high" style="opacity: 0.7">
+        <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high">
             <ul class="list-group list-unstyled ss-black-bg">
                 <li class="list-group-item  ss-black-bg ss-no-border">
                     <a ng-click="model.goToFlightSearch()"
@@ -73,6 +72,7 @@ z-index: 1000;">
                 </li>
             </ul>
         </div>
+        <div class="col-sm-3"></div>
         <div class="col-sm-9">
             <!--<div class="row">-->
             <!--<div class="col-sm-2"></div>-->
@@ -136,6 +136,10 @@ z-index: 1000;">
                         <a class="btn wbdv-button rc-form-font-size btn-block ss-button-margin"
                            href="#/">
                             Logout
+                        </a>
+                        <a ng-click="model.AreYouSure()"
+                           class="btn wbdv-button rc-form-font-size btn-block ss-button-margin">
+                            Delete Me
                         </a>
                     </div>
                     <!--<a class="wbdv-left-right-margin pull-right" href="#/login">Already A Member?</a>-->

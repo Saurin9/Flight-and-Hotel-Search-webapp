@@ -9,6 +9,57 @@ module.exports = function (app, model) {
     app.get("/api/allUsers", findAllUsers);
 
 
+
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+    passport.use(new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+    app.post('/api/login', passport.authenticate('local'), login);
+
+    function localStrategy(username, password, done) {
+        model
+            .userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    if (!user) {
+                        return done(null, false);
+                    }
+                    return done(null, user);
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            );
+    }
+
+    function login(req, res) {
+        var user = req.user;
+        res.json(user);
+    }
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        model
+            .userModel
+            .findUserById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(err, null);
+                }
+            );
+    }
+
+
+
     function findSecurityQuestionByUsername (req, res) {
         var username = req.query.username;
         model
@@ -23,6 +74,7 @@ module.exports = function (app, model) {
                 }
             );
     }
+
 
     function deleteUser(req, res) {
         var userId = req.params.userId;
@@ -101,10 +153,7 @@ module.exports = function (app, model) {
     }
 
     function findUser(req, res) {
-        console.log(req.query.username);
-        console.log(req.query.password);
-        console.log(req.query.passwordRecoveryAnswer);
-        if(req.query.username && !typeof req.query.password==='undefined') {
+        if(req.query.username && req.query.password != "") {
             findUserByCredential(req, res);
         } else {
             if (req.query.username && req.query.passwordRecoveryAnswer){
@@ -159,7 +208,6 @@ module.exports = function (app, model) {
             .findUserByRecoveryCredentials(username, passwordRecoveryAnswer)
             .then(
                 function (user) {
-                    console.log("hello");
                     res.send(user);
                 },
                 function (err) {

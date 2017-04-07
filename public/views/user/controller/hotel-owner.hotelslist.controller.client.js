@@ -19,7 +19,7 @@
                 .findHotelsByOwner(userId)
                 .success(function (hotels) {
                     vm.hotels = hotels;
-                    // console.log(hotels);
+                    console.log(hotels);
                 });
             vm.bookingDates = [];
             vm.counter = 0;

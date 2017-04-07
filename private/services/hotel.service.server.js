@@ -5,6 +5,7 @@ module.exports = function (app, model) {
     app.put('/api/hotel/:hotelId/updateAvailability', updateHotelAvailability);
     app.delete('/api/hotel/:hotelId', deleteHotel);
     app.post('/api/searchHotel/', findHotels);
+    app.get('/api/allHotels', findAllHotels);
     app.get('/api/hotel/:hotelId', findHotelById);
     app.put('/api/hotel/:hotelId', updateHotel);
 
@@ -38,6 +39,18 @@ module.exports = function (app, model) {
                     res.sendStatus(400);
                 }
             );
+    }
+    
+    function findAllHotels(req, res) {
+        model
+            .hotelModel
+            .findAllHotels()
+            .then(function (hotels) {
+                    res.json(hotels);
+                },
+                function (err) {
+                    res.sendStatus(400);
+                });
     }
 
     function findHotels (req, res) {

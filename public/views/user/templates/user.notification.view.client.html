@@ -1,5 +1,5 @@
 <div class="rc-no-padding rc-background-user-notification">
-    <nav class="nav ss-black-navbar ss-navbar-padding">
+    <nav class="nav ss-black-navbar ss-navbar-padding rc-navbar-style navbar-fixed-top">
         <div class="container-fluid">
             <div class="row">
                 <!--<div class="col-sm-1"></div>-->
@@ -11,16 +11,17 @@
                     <!--<div class="col-sm-2"></div>-->
                     <!--<div class="col-sm-8">-->
                     <div class="dropdown pull-right">
-                        <button class="btn dropdown-toggle ss-btn-highlight-off ss-btn-top-margin"
-                                type="button" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-align-justify ss-white-font"></span>
-                        </button>
-                        <ul class="dropdown-menu" style="margin-bottom: 100px">
-                            <li><a ng-click="model.goToFlightSearch()">Search Flights</a></li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-align-justify ss-white-font"
+                              style="margin-top: 15px; margin-right: 10px"></span>
+                            <!--<span class="caret"></span>-->
+                        </a>
+                        <ul class="dropdown-menu rc-dropdown-small-font">
+                            <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
                             <li><a ng-click="model.goToProfile()">Profile</a></li>
                             <li><a ng-click="model.goToUserHistory()">History</a></li>
-                            <li><a>Notifications</a></li>
-                            <li><a href="#/">Logout</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#/" class="">Logout</a></li>
                         </ul>
                     </div>
 
@@ -54,7 +55,7 @@
         </div>
     </nav>
 
-    <div class="container-fluid ss-top-padding">
+    <div class="container-fluid ss-top-padding rc-top-margin-page">
         <div class="row ">
             <!--<div class="col-sm-1"></div>-->
             <div class="col-md-3 ss-whitefont hidden-xs hidden-sm ss-black-bg-high">
@@ -92,11 +93,12 @@
                     </li>
                 </ul>
             </div>
+            <div class="col-sm-3"></div>
             <div class="col-md-9">
-                <div class="container-fluid wbdv-margin-top">
+                <div class="container-fluid wbdv-margin-top" style="background-color: #0f0f0f; opacity: 0.9">
                     <div class="row">
                         <!--<div class="col-sm-1"></div>-->
-                        <div class="col-xs-12 col-sm-12" style="opacity: 0.9">
+                        <div class="col-xs-12 col-sm-12">
                             <!--<ul ng-repeat="website in model.websiteList" class="list-group">-->
                             <!--<li class="list-group-item">-->
                             <!--<a ng-click="model.goToWebsite(website._id)"-->
@@ -140,7 +142,7 @@
                                             <!--</div>-->
                                         <!--</div>-->
                                     <!--</li>-->
-                                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 1">
+                                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
                                         <div ng-if="model.noNitifications">
                                             <h4 class="wbdv-font-color-white">
                                                 There are no Notifications.
@@ -153,62 +155,34 @@
                                             <div class="col-md-6 rc-small-top-margin text-center">
                                                 <h3 class="wbdv-font-color-white">Message</h3>
                                             </div>
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<h4 class="wbdv-font-color-white">Agent Names</h4>-->
-                                            <!--</div>-->
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<h4 class="wbdv-font-color-white">Source</h4>-->
-                                            <!--</div>-->
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<h4 class="wbdv-font-color-white">Destination</h4>-->
-                                            <!--</div>-->
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<h4 class="wbdv-font-color-white">Date</h4>-->
-                                            <!--</div>-->
                                         </div>
                                     </li>
-                                    <li ng-repeat="notification in model.notifications" class="list-group-item" style="background-color: #0f0f0f; opacity: 1">
+                                    <li ng-repeat="notification in model.notifications"
+                                        class="list-group-item"
+                                        style="background-color: #0f0f0f; opacity: 0.9">
                                         <div class="row">
+                                            <div class="col-md-4 rc-small-top-margin">
+                                                <h4 class="visible-xs visible-sm wbdv-font-color-white">
+                                                    Journey &nbsp;: &nbsp;{{notification.source}}&nbsp; to&nbsp; {{notification.destination}}
+                                                    <br>Dates : &nbsp;{{notification.departDate}} &nbsp;&nbsp;
+                                                    {{notification.returnDate}}
+                                                </h4>
+                                                <h4 class="hidden-xs hidden-sm wbdv-font-color-white">
+                                                    {{notification.source}}&nbsp; to&nbsp; {{notification.destination}}
+                                                    <br>Dates : &nbsp;{{notification.departDate}} &nbsp;&nbsp;
+                                                    {{notification.returnDate}}
+                                                </h4>
+                                            </div>
+                                            <div class="col-md-8 rc-small-top-margin">
                                             <ul class="list-group">
-                                                <li ng-repeat="messageFromAgent in notification.AgentsResponded"
-                                                    class="list-group-item"
-                                                    style="background-color: #0f0f0f; opacity: 1">
-                                                    <div class="col-md-4 rc-small-top-margin">
-                                                        <h4 class="visible-xs visible-sm wbdv-font-color-white">
-                                                            Journey &nbsp;: &nbsp;{{notification.source}}&nbsp; to&nbsp; {{notification.destination}}
-                                                            <br>Dates : &nbsp;{{notification.departDate}} &nbsp;&nbsp;
-                                                            {{notification.returnDate}}
-                                                        </h4>
-                                                        <h4 class="hidden-xs hidden-sm wbdv-font-color-white">
-                                                            {{notification.source}}&nbsp; to&nbsp; {{notification.destination}}
-                                                            <br>Dates : &nbsp;{{notification.departDate}} &nbsp;&nbsp;
-                                                            {{notification.returnDate}}
-                                                        </h4>
-                                                    </div>
-                                                    <!--<div class="col-md-3 rc-small-top-margin text-center">-->
-                                                        <!--<h4 class="wbdv-font-color-white">-->
-                                                            <!--{{notification.destination}}-->
-                                                        <!--</h4>-->
-                                                    <!--</div>-->
-                                                    <!--<div class="col-md-6 rc-small-top-margin text-center">-->
-                                                        <!--<h4 class="wbdv-font-color-white">-->
-                                                            <!--{{notification.departDate}}-->
-                                                            <!--&nbsp;to&nbsp;-->
-                                                            <!--{{notification.returnDate}}-->
-                                                        <!--</h4>-->
-                                                    <!--</div>-->
-                                                    <div class="col-md-6 rc-small-top-margin">
+                                                <li ng-repeat="messageFromAgent in notification.AgentsResponded">
+                                                    <div class="col-md-9">
                                                         <h4 class="wbdv-font-color-white">
-                                                            Agent Name&nbsp;&nbsp; :&nbsp; &nbsp;{{messageFromAgent._id}}
+                                                            Agent Name&nbsp;&nbsp; :&nbsp; &nbsp;{{messageFromAgent.agentName}}
                                                             <br>Message &nbsp;&nbsp;: &nbsp;&nbsp;{{messageFromAgent.message}}
                                                         </h4>
                                                     </div>
-                                                    <!--<div class="col-md-5 rc-small-top-margin">-->
-                                                        <!--<h4 class="wbdv-font-color-white">-->
-                                                            <!--{{messageFromAgent.message}}-->
-                                                        <!--</h4>-->
-                                                    <!--</div>-->
-                                                    <div id="sendMessageButton" class="col-md-2 rc-small-top-margin text-center">
+                                                    <div id="sendMessageButton" class="col-md-3 rc-small-top-margin text-center">
                                                         <h5>
                                                             <a ng-click="model.deleteNotification(notification, messageFromAgent._id)"
                                                                class="btn btn-danger form-control">
@@ -218,6 +192,7 @@
                                                     </div>
                                                 </li>
                                             </ul>
+                                            </div>
                                             <!--<div class="col-md-3 rc-small-top-margin">-->
                                                 <!--<h4 class="wbdv-font-color-white">-->
                                                     <!--{{notification.message}}-->

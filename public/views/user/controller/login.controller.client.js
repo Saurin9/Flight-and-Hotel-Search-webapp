@@ -15,7 +15,13 @@
         init();
 
         function login(user) {
-            console.log(user.passwordRecoveryAnswer);
+            if (!user.password) {
+                user.password = "";
+            }
+            if (!user.passwordRecoveryAnswer) {
+                user.passwordRecoveryAnswer = "";
+            }
+
             UserService
                 .findUserByCredentials(user.username, user.password, user.passwordRecoveryAnswer)
                 .success(function (user) {
@@ -29,8 +35,22 @@
                         }
                     } else {
                         vm.error = "User not found";
+                        vm.user.password = null;
                     }
                 });
+
+
+
+            // UserService
+            //     .login(user)
+            //     .then(
+            //         function (user) {
+            //             console.log(user);
+            //         },
+            //         function (err) {
+            //             console.log(err);
+            //         }
+            //     );
         }
 
         function setToRecoveryMode (user) {
@@ -51,5 +71,6 @@
                     }
                 });
         }
+
     }
 })();

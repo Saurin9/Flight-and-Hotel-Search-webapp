@@ -31,19 +31,19 @@ module.exports = function () {
 
         HotelModel
             .update({"_id":hotelId}, {property_name: hotel.property_name,
-                                    addressline1: hotel.addressline1,
-                                    city: hotel.city,
-                                    region: hotel.region,
-                                    postal_code: hotel.postal_code,
-                                    phone: hotel.phone,
-                                    fax : hotel.fax,
-                                    amenities: hotel.amenities,
-                                    total_price: hotel.total_price}, function (err, hotel) {
-            if(err){
-                deferred.abort(err);
-            } else{
-                deferred.resolve(hotel);
-            }
+                addressline1: hotel.addressline1,
+                city: hotel.city,
+                region: hotel.region,
+                postal_code: hotel.postal_code,
+                phone: hotel.phone,
+                fax : hotel.fax,
+                amenities: hotel.amenities,
+                total_price: hotel.total_price}, function (err, hotel) {
+                if(err){
+                    deferred.abort(err);
+                } else{
+                    deferred.resolve(hotel);
+                }
             });
         return deferred.promise;
     }

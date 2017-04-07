@@ -328,6 +328,10 @@ a:hover, a:focus {
     padding: 10px;
 }
 
+.rc-position-fixed {
+    position: fixed;
+}
+
 .wbdv-font-color-blue {
     color: royalblue;
 }
@@ -357,6 +361,12 @@ body img {
     background-color: #0f0f0f;
     opacity: 0.9;
 }
+
+.rc-admin-background {
+    background-color: #0f0f0f;
+    opacity: 0.8;
+}
+
 
 .rc-user-history-top-margin {
     margin-top: 10px;
@@ -480,6 +490,10 @@ a {
     font-size: 17px;
 }
 
+.rc-top-margin-page {
+    margin-top: 52px;
+}
+
 .ss-navbar-padding{
     padding-top: 2px;
     padding-bottom: 2px;
@@ -489,11 +503,17 @@ a {
     height:100vh;
     background-color: black;
     /*height: 500px;*/
-    opacity: 0.8;
+    opacity: 0.9;
+    position: fixed;
     /*background-size: cover;*/
     min-height: 100%;
     /*min-width: 100%;*/
-    position: fixed;
+}
+
+.ss-wbdv-button {
+    background-color: green;
+    font-size: 1.2em;
+    color: white;
 }
 
 .ss-black-bg {
@@ -641,8 +661,9 @@ a.hover {
     font-size: 15px;
 }
 
-.ss-wbdv-button {
-    background-color: green;
-       font-size: 1.2em;
-    color: white;
+
+.rc-navbar-style {
+    opacity: 1; !important;
+    /*position: relative;*/
+    z-index: 1000;
 }
