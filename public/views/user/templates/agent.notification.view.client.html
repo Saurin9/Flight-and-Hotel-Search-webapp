@@ -1,31 +1,31 @@
 <div class="rc-no-padding rc-background-agent-notification">
-<nav class="nav ss-black-navbar ss-navbar-padding rc-navbar-style navbar-fixed-top rc-position-fixed">
-    <div class="container-fluid">
-        <div class="row">
-            <!--<div class="col-sm-1"></div>-->
-            <!--<div class="col-xs-12 col-sm-10">-->
-            <div class="col-md-3">
-            </div>
-            <div class="col-md-9">
-                <!--<div class="row">-->
-                <!--<div class="col-sm-2"></div>-->
-                <!--<div class="col-sm-8">-->
-                <div class="dropdown pull-right">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    <nav class="nav ss-black-navbar ss-navbar-padding rc-navbar-style navbar-fixed-top rc-position-fixed">
+        <div class="container-fluid">
+            <div class="row">
+                <!--<div class="col-sm-1"></div>-->
+                <!--<div class="col-xs-12 col-sm-10">-->
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-9">
+                    <!--<div class="row">-->
+                    <!--<div class="col-sm-2"></div>-->
+                    <!--<div class="col-sm-8">-->
+                    <div class="dropdown pull-right">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="glyphicon glyphicon-align-justify ss-white-font"
                               style="margin-top: 15px; margin-right: 10px"></span>
-                        <!--<span class="caret"></span>-->
-                    </a>
-                    <ul class="dropdown-menu rc-dropdown-small-font">
-                        <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
-                        <li><a ng-click="model.goToProfile()">Profile</a></li>
-                        <li><a ng-click="model.goToAgentHistory()">History</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#/" class="">Logout</a></li>
-                    </ul>
-                </div>
+                            <!--<span class="caret"></span>-->
+                        </a>
+                        <ul class="dropdown-menu rc-dropdown-small-font">
+                            <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
+                            <li><a ng-click="model.goToProfile()">Profile</a></li>
+                            <li><a ng-click="model.goToAgentHistory()">History</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#/" class="">Logout</a></li>
+                        </ul>
+                    </div>
 
-                <!--<a class="navbar-brand pull-left" href="#/">-->
+                    <!--<a class="navbar-brand pull-left" href="#/">-->
                     <strong class="navbar-brand visible-xs rc-agent-notify-font-size
                     wbdv-font-color-white pull-left">
                         Agent Notification Center
@@ -34,192 +34,197 @@
                         Agent Notification Center
                     </strong>
                     <!--<strong class="wbdv-font-family ss-white-font">-->
-                        <!--Agent Notification Center-->
+                    <!--Agent Notification Center-->
                     <!--</strong>-->
-                <!--</a>-->
+                    <!--</a>-->
 
-                <!--<a class="navbar-brand pull-right" href="#/login">-->
-                <!--<i class="fa fa-user-circle-o visible-xs"-->
-                <!--aria-hidden="true"></i>-->
-                <!--<strong class="wbdv-font-family hidden-xs">-->
-                <!--Login-->
-                <!--</strong>-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="col-sm-2"></div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="col-sm-1"></div>-->
+                    <!--<a class="navbar-brand pull-right" href="#/login">-->
+                    <!--<i class="fa fa-user-circle-o visible-xs"-->
+                    <!--aria-hidden="true"></i>-->
+                    <!--<strong class="wbdv-font-family hidden-xs">-->
+                    <!--Login-->
+                    <!--</strong>-->
+                    <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-2"></div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<div class="container-fluid ss-top-padding rc-top-margin-page">
-    <div class="row ">
-        <!--<div class="col-sm-1"></div>-->
-        <div class="col-md-3 ss-whitefont hidden-xs hidden-sm ss-black-bg-high">
-            <ul class="list-group list-unstyled  ss-black-bg">
-                <li class="list-group-item  ss-black-bg ss-no-border">
-                    <a ng-click="model.goToFlightSearch()"
-                       class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
-                        <i class="rc-link-left-margin rc-link-right-margin fa fa-plane"
-                           aria-hidden="true"></i>
-                        Search Flights
-                    </a>
-                </li>
-                <li class="list-group-item ss-black-bg ss-no-border">
-                    <a ng-click="model.goToProfile()"
-                       class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
-                        <i class="rc-link-left-margin rc-link-right-margin fa fa-user-circle-o"
-                           aria-hidden="true"></i>
-                        Profile
-                    </a>
-                </li>
-                <li class="list-group-item  ss-black-bg ss-no-border">
-                    <a ng-click="model.goToAgentHistory()"
-                       class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
-                        <i class="rc-link-left-margin rc-link-right-margin fa fa-history"
-                           aria-hidden="true"></i>
-                        History
-                    </a>
-                </li>
-                <li class="list-group-item  ss-black-bg ss-no-border selected-page">
-                    <a class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
-                        <i class="rc-link-left-margin rc-link-right-margin fa fa-exclamation-circle"
-                           aria-hidden="true"></i>
-                        Notifications
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-sm-3"></div>
-        <div class="col-md-9">
-            <div class="container-fluid wbdv-margin-top">
-            <div class="row">
+    <div class="container-fluid ss-top-padding rc-top-margin-page">
+        <div class="row ">
             <!--<div class="col-sm-1"></div>-->
-            <div class="col-xs-12 col-sm-12" style="opacity: 0.9">
-                <div class="page1">
-                <ul class="list-group" style="margin-top: 10px">
-                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
-                        <div class="row">
-                            <div class="col-md-2 rc-small-top-margin">
-                                <input ng-model="model.alertFilter.username"
-                                       type="text"
-                                       class="form-control"
-                                       placeholder="Username">
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <input ng-model="model.alertFilter.source"
-                                       type="text"
-                                       class="form-control"
-                                       placeholder="Source">
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <input ng-model="model.alertFilter.destination"
-                                       type="text"
-                                       class="form-control"
-                                       placeholder="Destination">
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <input ng-model="model.alertFilter.dates"
-                                       type="text"
-                                       class="form-control"
-                                       placeholder="Date (YYYY-MM-DD)">
-                            </div>
-                            <div id="filterMessageButton" class="col-md-2 rc-small-top-margin">
-                                <a ng-click="model.filterAlerts(model.alertFilter)" class="btn btn-default form-control">
-                                    Filter
-                                </a>
-                            </div>
-                            <div id="clearFilterMessageButton" class="col-md-2 rc-small-top-margin">
-                                <a ng-click="model.clearFilterAlerts()" class="btn btn-default form-control">
-                                    Clear Filter
-                                </a>
-                            </div>
-                        </div>
+            <div class="col-md-3 ss-whitefont hidden-xs hidden-sm ss-black-bg-high">
+                <ul class="list-group list-unstyled  ss-black-bg">
+                    <li class="list-group-item  ss-black-bg ss-no-border">
+                        <a ng-click="model.goToFlightSearch()"
+                           class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                            <i class="rc-link-left-margin rc-link-right-margin fa fa-plane"
+                               aria-hidden="true"></i>
+                            Search Flights
+                        </a>
                     </li>
-                <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
-                    <div class="row hidden-xs hidden-sm text-center">
-                        <div class="col-md-4 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">Username</h4>
-                        </div>
-                        <div class="col-md-2 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">Source</h4>
-                        </div>
-                        <div class="col-md-2 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">Destination</h4>
-                        </div>
-                        <div class="col-md-4 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">Date</h4>
-                        </div>
-                        <!--<div class="col-md-3 rc-small-top-margin">-->
-                            <!--<h4 class="wbdv-font-color-white">Message</h4>-->
-                        <!--</div>-->
-                    </div>
-                </li>
-                <li ng-repeat="alert in model.alerts" class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
-                    <div class="row text-center">
-                        <div class="col-md-4 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">
-                                {{alert.username}}
-                                <span ng-click="model.deleteMessageForAgent(alert)"
-                                      class="visible-xs visible-sm pull-right glyphicon glyphicon-remove"></span>
-                            </h4>
-                        </div>
-                        <div class="col-md-2 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">{{alert.source}}</h4>
-                        </div>
-                        <div class="col-md-2 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">{{alert.destination}}</h4>
-                        </div>
-                        <div ng-if="alert.returnDate" class="col-md-4 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">
-                                Depart on &nbsp; : &nbsp; {{alert.departDate}}
-                            </h4>
-                            <h4 class="wbdv-font-color-white">
-                                Return on &nbsp; : &nbsp; {{alert.returnDate}}
-                            </h4>
-                        </div>
-                        <div ng-if="!alert.returnDate" class="col-md-4 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">
-                                Depart on &nbsp; : &nbsp; {{alert.departDate}}
-                            </h4>
-                        </div>
-                        <div class="col-md-6 rc-small-top-margin text-center">
+                    <li class="list-group-item ss-black-bg ss-no-border">
+                        <a ng-click="model.goToProfile()"
+                           class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                            <i class="rc-link-left-margin rc-link-right-margin fa fa-user-circle-o"
+                               aria-hidden="true"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li class="list-group-item  ss-black-bg ss-no-border">
+                        <a ng-click="model.goToAgentHistory()"
+                           class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                            <i class="rc-link-left-margin rc-link-right-margin fa fa-history"
+                               aria-hidden="true"></i>
+                            History
+                        </a>
+                    </li>
+                    <li class="list-group-item  ss-black-bg ss-no-border selected-page">
+                        <a class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                            <i class="rc-link-left-margin rc-link-right-margin fa fa-exclamation-circle"
+                               aria-hidden="true"></i>
+                            Notifications
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-3"></div>
+            <div class="col-md-9">
+                <div class="container-fluid wbdv-margin-top">
+                    <div class="row">
+                        <!--<div class="col-sm-1"></div>-->
+                        <div class="col-xs-12 col-sm-12" style="opacity: 0.9">
+                            <div class="page1 wbdv-font-color-white" ng-if="model.isAlerts">
+                                <h4 style="background-color: #0f0f0f; opacity: 0.9; padding: 20px">
+                                    There are no new user alerts&nbsp;!
+                                </h4>
+                            </div>
+                            <div class="page1" ng-if="!model.isAlerts">
+                                <ul class="list-group" style="margin-top: 10px">
+                                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
+                                        <div class="row">
+                                            <div class="col-md-2 rc-small-top-margin">
+                                                <input ng-model="model.alertFilter.username"
+                                                       type="text"
+                                                       class="form-control"
+                                                       placeholder="Username">
+                                            </div>
+                                            <div class="col-md-2 rc-small-top-margin">
+                                                <input ng-model="model.alertFilter.source"
+                                                       type="text"
+                                                       class="form-control"
+                                                       placeholder="Source">
+                                            </div>
+                                            <div class="col-md-2 rc-small-top-margin">
+                                                <input ng-model="model.alertFilter.destination"
+                                                       type="text"
+                                                       class="form-control"
+                                                       placeholder="Destination">
+                                            </div>
+                                            <div class="col-md-2 rc-small-top-margin">
+                                                <input ng-model="model.alertFilter.dates"
+                                                       type="text"
+                                                       class="form-control"
+                                                       placeholder="Date (YYYY-MM-DD)">
+                                            </div>
+                                            <div id="filterMessageButton" class="col-md-2 rc-small-top-margin">
+                                                <a ng-click="model.filterAlerts(model.alertFilter)" class="btn btn-default form-control">
+                                                    Filter
+                                                </a>
+                                            </div>
+                                            <div id="clearFilterMessageButton" class="col-md-2 rc-small-top-margin">
+                                                <a ng-click="model.clearFilterAlerts()" class="btn btn-default form-control">
+                                                    Clear Filter
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
+                                        <div class="row hidden-xs hidden-sm text-center">
+                                            <div class="col-md-4 rc-small-top-margin">
+                                                <h4 class="wbdv-font-color-white">Username</h4>
+                                            </div>
+                                            <div class="col-md-2 rc-small-top-margin">
+                                                <h4 class="wbdv-font-color-white">Source</h4>
+                                            </div>
+                                            <div class="col-md-2 rc-small-top-margin">
+                                                <h4 class="wbdv-font-color-white">Destination</h4>
+                                            </div>
+                                            <div class="col-md-4 rc-small-top-margin">
+                                                <h4 class="wbdv-font-color-white">Date</h4>
+                                            </div>
+                                            <!--<div class="col-md-3 rc-small-top-margin">-->
+                                            <!--<h4 class="wbdv-font-color-white">Message</h4>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </li>
+                                    <li ng-repeat="alert in model.alerts" class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
+                                        <div class="row text-center">
+                                            <div class="col-md-4 rc-small-top-margin">
+                                                <h4 class="wbdv-font-color-white">
+                                                    {{alert.username}}
+                                                    <span ng-click="model.deleteMessageForAgent(alert)"
+                                                          class="visible-xs visible-sm pull-right glyphicon glyphicon-remove"></span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-md-2 rc-small-top-margin">
+                                                <h4 class="wbdv-font-color-white">{{alert.source}}</h4>
+                                            </div>
+                                            <div class="col-md-2 rc-small-top-margin">
+                                                <h4 class="wbdv-font-color-white">{{alert.destination}}</h4>
+                                            </div>
+                                            <div ng-if="alert.returnDate" class="col-md-4 rc-small-top-margin">
+                                                <h4 class="wbdv-font-color-white">
+                                                    Depart on &nbsp; : &nbsp; {{alert.departDate}}
+                                                </h4>
+                                                <h4 class="wbdv-font-color-white">
+                                                    Return on &nbsp; : &nbsp; {{alert.returnDate}}
+                                                </h4>
+                                            </div>
+                                            <div ng-if="!alert.returnDate" class="col-md-4 rc-small-top-margin">
+                                                <h4 class="wbdv-font-color-white">
+                                                    Depart on &nbsp; : &nbsp; {{alert.departDate}}
+                                                </h4>
+                                            </div>
+                                            <div class="col-md-6 rc-small-top-margin text-center">
                         <textarea ng-model ="message"
                                   class="form-control"
                                   id="message"
                                   rows="2"
                                   placeholder="Message To Send"></textarea>
+                                            </div>
+                                            <div id="sendMessageButton" class="col-md-3 rc-small-top-margin text-center">
+                                                <h5>
+                                                    <a ng-click="model.sendMessage(alert, message)"
+                                                       class="btn btn-primary form-control">
+                                                        Send
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="deleteMessageButton"
+                                                 class="hidden-xs hidden-sm col-md-3 rc-small-top-margin text-center">
+                                                <h5>
+                                                    <a ng-click="model.deleteMessageForAgent(alert)"
+                                                       class="btn btn-danger form-control">
+                                                        Delete Message
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div id="sendMessageButton" class="col-md-3 rc-small-top-margin text-center">
-                            <h5>
-                                <a ng-click="model.sendMessage(alert, message)"
-                                   class="btn btn-primary form-control">
-                                    Send
-                                </a>
-                            </h5>
-                        </div>
-                        <div id="deleteMessageButton"
-                             class="hidden-xs hidden-sm col-md-3 rc-small-top-margin text-center">
-                            <h5>
-                                <a ng-click="model.deleteMessageForAgent(alert)"
-                                   class="btn btn-danger form-control">
-                                    Delete Message
-                                </a>
-                            </h5>
-                        </div>
+                        <!--<div class="col-sm-1"></div>-->
                     </div>
-                </li>
-                </ul>
                 </div>
             </div>
             <!--<div class="col-sm-1"></div>-->
-            </div>
-            </div>
         </div>
-        <!--<div class="col-sm-1"></div>-->
     </div>
-</div>
 </div>

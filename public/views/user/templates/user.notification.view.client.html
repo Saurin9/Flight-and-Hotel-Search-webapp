@@ -111,44 +111,44 @@
                             <!--</a>-->
                             <!--</li>-->
                             <!--</ul>-->
-                            <div class="page1">
+                            <div ng-if="model.noNitifications" style="padding: 10px">
+                                <h4 class="wbdv-font-color-white">
+                                    There are no Notifications.
+                                </h4>
+                            </div>
+                            <div ng-if="!model.noNitifications" class="page1">
                                 <ul class="list-group" style="margin-top: 10px">
                                     <!--<li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">-->
-                                        <!--<div class="row">-->
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<input type="text"-->
-                                                       <!--class="form-control"-->
-                                                       <!--placeholder="Username">-->
-                                            <!--</div>-->
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<input type="text"-->
-                                                       <!--class="form-control"-->
-                                                       <!--placeholder="Source">-->
-                                            <!--</div>-->
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<input type="text"-->
-                                                       <!--class="form-control"-->
-                                                       <!--placeholder="Destination">-->
-                                            <!--</div>-->
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<input type="text"-->
-                                                       <!--class="form-control"-->
-                                                       <!--placeholder="Date">-->
-                                            <!--</div>-->
-                                            <!--<div id="filterMessageButton" class="col-md-4 rc-small-top-margin">-->
-                                                <!--<a href="#" class="btn btn-default form-control">-->
-                                                    <!--Filter-->
-                                                <!--</a>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
+                                    <!--<div class="row">-->
+                                    <!--<div class="col-md-2 rc-small-top-margin">-->
+                                    <!--<input type="text"-->
+                                    <!--class="form-control"-->
+                                    <!--placeholder="Username">-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-2 rc-small-top-margin">-->
+                                    <!--<input type="text"-->
+                                    <!--class="form-control"-->
+                                    <!--placeholder="Source">-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-2 rc-small-top-margin">-->
+                                    <!--<input type="text"-->
+                                    <!--class="form-control"-->
+                                    <!--placeholder="Destination">-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-2 rc-small-top-margin">-->
+                                    <!--<input type="text"-->
+                                    <!--class="form-control"-->
+                                    <!--placeholder="Date">-->
+                                    <!--</div>-->
+                                    <!--<div id="filterMessageButton" class="col-md-4 rc-small-top-margin">-->
+                                    <!--<a href="#" class="btn btn-default form-control">-->
+                                    <!--Filter-->
+                                    <!--</a>-->
+                                    <!--</div>-->
+                                    <!--</div>-->
                                     <!--</li>-->
                                     <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
-                                        <div ng-if="model.noNitifications">
-                                            <h4 class="wbdv-font-color-white">
-                                                There are no Notifications.
-                                            </h4>
-                                        </div>
-                                        <div ng-if="!model.noNitifications" class="row hidden-xs hidden-sm">
+                                        <div class="row hidden-xs hidden-sm">
                                             <div class="col-md-4 rc-small-top-margin text-center">
                                                 <h3 class="wbdv-font-color-white">Journey</h3>
                                             </div>
@@ -174,29 +174,29 @@
                                                 </h4>
                                             </div>
                                             <div class="col-md-8 rc-small-top-margin">
-                                            <ul class="list-group">
-                                                <li ng-repeat="messageFromAgent in notification.AgentsResponded">
-                                                    <div class="col-md-9">
-                                                        <h4 class="wbdv-font-color-white">
-                                                            Agent Name&nbsp;&nbsp; :&nbsp; &nbsp;{{messageFromAgent.agentName}}
-                                                            <br>Message &nbsp;&nbsp;: &nbsp;&nbsp;{{messageFromAgent.message}}
-                                                        </h4>
-                                                    </div>
-                                                    <div id="sendMessageButton" class="col-md-3 rc-small-top-margin text-center">
-                                                        <h5>
-                                                            <a ng-click="model.deleteNotification(notification, messageFromAgent._id)"
-                                                               class="btn btn-danger form-control">
-                                                                Delete
-                                                            </a>
-                                                        </h5>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                <ul class="list-group">
+                                                    <li ng-repeat="messageFromAgent in notification.AgentsResponded">
+                                                        <div class="col-md-9">
+                                                            <h4 class="wbdv-font-color-white">
+                                                                Agent Name&nbsp;&nbsp; :&nbsp; &nbsp;{{messageFromAgent.agentName}}
+                                                                <br>Message &nbsp;&nbsp;: &nbsp;&nbsp;{{messageFromAgent.message}}
+                                                            </h4>
+                                                        </div>
+                                                        <div id="sendMessageButton" class="col-md-3 rc-small-top-margin text-center">
+                                                            <h5>
+                                                                <a ng-click="model.deleteNotification(notification, messageFromAgent._id)"
+                                                                   class="btn btn-danger form-control">
+                                                                    Delete
+                                                                </a>
+                                                            </h5>
+                                                        </div>
+                                                    </li>
+                                                </ul>
                                             </div>
                                             <!--<div class="col-md-3 rc-small-top-margin">-->
-                                                <!--<h4 class="wbdv-font-color-white">-->
-                                                    <!--{{notification.message}}-->
-                                                <!--</h4>-->
+                                            <!--<h4 class="wbdv-font-color-white">-->
+                                            <!--{{notification.message}}-->
+                                            <!--</h4>-->
                                             <!--</div>-->
                                         </div>
                                     </li>
@@ -211,4 +211,3 @@
         </div>
     </div>
 </div>
-
