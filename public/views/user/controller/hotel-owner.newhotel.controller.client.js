@@ -12,10 +12,11 @@
         vm.addHotel = addHotel;
 
         function init() {
-
+            findAllCityCodeArray();
         }
         init();
 
+        
         function goToHotelOwnerProfile() {
             $location.url('/user-hotelowner/' + userId);
         }
@@ -25,6 +26,7 @@
         }
 
         function addHotel(newhotel) {
+            
             HotelService
                 .addHotel(newhotel, userId)
                 .success(function (hotel) {
@@ -33,6 +35,29 @@
                     }
                 })
         }
+
+        function findAllCityCodeArray() {
+            // Create a new XMLHttpRequest.
+            var request = new XMLHttpRequest();
+
+            // Handle state changes for the request.
+            request.onreadystatechange = function(response) {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        // Parse the JSON
+                        var jsonOptions = JSON.parse(request.responseText);
+
+                        vm.allCities = jsonOptions.response;
+                    }
+                }
+            };
+
+            request.open('GET', 'City_Codes.json', true);
+            request.send();
+
+        }
+        
+
 
 
     }
