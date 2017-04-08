@@ -17,6 +17,14 @@
                 controller: "HotelSearchController",
                 controllerAs: "model"
             })
+            .when("/user/hotelSearch", {
+                templateUrl: "views/hotels/templates/hotel-search.view.client.html",
+                controller: "HotelSearchController",
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
+            })
             .when("/user/allUsers", {
                 templateUrl: "views/user/templates/admin-users.view.client.html",
                 controller: "AdminProfileController",
@@ -77,10 +85,13 @@
                     checkLogin : checkLogin
                 }
             })
-            .when("/user-hotelowner/:uid" , {
+            .when("/user-hotelowner/profile" , {
                 templateUrl: "views/user/templates/hotel-owner.profile.view.client.html",
                 controller: "HotelOwnerProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
             .when("/user-hotelowner/:uid/hotel" , {
                 templateUrl: "views/user/templates/hotel-owner.hotelslist.view.client.html",

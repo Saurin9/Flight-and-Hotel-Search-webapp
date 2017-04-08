@@ -20,7 +20,7 @@
                             <li><a class="rc-drop-menu">Profile</a></li>
                             <li><a ng-click="model.goToHistory()" class="rc-drop-menu">History</a></li>
                             <li><a ng-click="model.goToNotifications()" class="rc-drop-menu">Notifications</a></li>
-                            <li><a href="#/" class="rc-drop-menu">Logout</a></li>
+                            <li><a ng-click="model.logout()" class="rc-drop-menu">Logout</a></li>
                         </ul>
                     </div>
 
@@ -148,7 +148,7 @@
                                 Update Profile
                             </a>
                             <a class="btn wbdv-button rc-form-font-size btn-block ss-button-margin"
-                               href="#/">
+                               ng-click="model.logout()">
                                 Logout
                             </a>
                         </div>
