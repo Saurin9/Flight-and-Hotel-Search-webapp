@@ -48,6 +48,11 @@
         init();
 
         function gotoHotelResultsPage(hotelBookingReq) {
+            for (var cityInfo in vm.allCities) {
+                if (vm.allCities[cityInfo].name == hotelBookingReq.location) {
+                    hotelBookingReq.location = vm.allCities[cityInfo].code;
+                }
+            }
             $location.url('/hotels/SearchResults/location/' + hotelBookingReq.location + '/checkin/'
                 + hotelBookingReq.checkinDate.toISOString().substring(0,10) + '/checkout/' + hotelBookingReq.checkoutDate.toISOString().substring(0,10));
 
