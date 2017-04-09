@@ -97,6 +97,7 @@ module.exports = function () {
                             var b = query.checkoutDate.split("-");
                             var a2 = new Date(a[0], a[1] - 1, a[2]);
                             var b2 = new Date(b[0], b[1] - 1, b[2]);
+                            console.log(date.checkIn);
                             var c = date.checkIn.split("-");
                             var c2 = new Date(c[0], c[1] - 1, c[2]);
                             var d = date.checkOut.split("-");

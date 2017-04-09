@@ -50,14 +50,11 @@
         }
 
         function updateHotelAvailibility (editedDetails, hotelId) {
-            // var available_from = editedDetails.available_from.toISOString().substring(0,10);
-            // var available_till = editedDetails.available_till.toISOString().substring(0,10);
-            // editedDetails.available_from = available_from;
-            // editedDetails.available_till = available_till;
 
             var bookingDate = {checkIn : editedDetails.checkIn.toISOString().substring(0,10),
                 checkOut : editedDetails.checkOut.toISOString().substring(0,10)};
             console.log(bookingDate);
+            console.log(hotelId);
             HotelService
                 .updateHotelAvailibility(bookingDate, hotelId)
                 .success(function (hotel) {

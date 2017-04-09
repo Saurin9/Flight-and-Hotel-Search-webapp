@@ -96,7 +96,11 @@
                                     <input ng-model="model.newhotel.city"
                                            type="text"
                                            class="form-control ss-inputarea-top-margin"
-                                           placeholder="City">
+                                           placeholder="City"
+                                           id="city"
+                                           list="cityList"
+                                           required>
+                                    <datalist id="cityList"></datalist>
                                     <input ng-model="model.newhotel.region"
                                            type="text"
                                            class="form-control ss-inputarea-top-margin"

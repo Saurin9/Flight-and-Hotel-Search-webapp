@@ -37,11 +37,11 @@
         }
 
         function goToNewHotel() {
-            $location.url('/user-hotelowner/' + userId +'/hotel/new');
+            $location.url('/user-hotelowner/hotel/new');
         }
 
         function goToHotelsList() {
-            $location.url('/user-hotelowner/' + userId +'/hotel');
+            $location.url('/user-hotelowner/hotel');
         }
 
         function logout() {

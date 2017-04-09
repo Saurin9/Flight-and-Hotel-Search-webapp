@@ -22,6 +22,40 @@
                     findAllCityCodeArray();
                 });
 
+
+            // Get the <datalist> and <input> elements.
+            var dataList = document.getElementById('cityList');
+            var input = document.getElementById('city');
+
+            // Create a new XMLHttpRequest.
+            var request = new XMLHttpRequest();
+
+            // Handle state changes for the request.
+            request.onreadystatechange = function(response) {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        // Parse the JSON
+                        var jsonOptions = JSON.parse(request.responseText);
+                        vm.allCities = jsonOptions.response;
+                        for (var cityInfo in vm.allCities) {
+                            var option = document.createElement('option');
+                            option.value = vm.allCities[cityInfo].name;
+                            dataList.appendChild(option);
+                        }
+                        // Update the placeholder text.
+                        input.placeholder = "Boston";
+                    } else {
+                        // An error occured :(
+                        input.placeholder = "Couldn't load cities";
+                    }
+                }
+            };
+
+            // Update the placeholder text.
+            input.placeholder = "Loading options...";
+
+            request.open('GET', 'City_Codes.json', true);
+            request.send();
         }
         init();
 
@@ -50,7 +84,7 @@
                 .addHotel(newhotel, userId)
                 .success(function (hotel) {
                     if(hotel){
-                        $location.url('/user-hotelowner/' + userId +'/hotel');
+                        $location.url('/user-hotelowner/hotel');
                     }
                 })
         }

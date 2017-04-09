@@ -11,6 +11,7 @@
         vm.hotelLoc = $routeParams['loc'];
         vm.cinDate = $routeParams['cin'];
         vm.coutDate = $routeParams['cout'];
+        vm.findCityName = findCityName;
 
         function init() {
             findAllCityCodeArray();
@@ -21,6 +22,7 @@
                 .getHotels(vm.hotelReq)
                 .success(function (hotels) {
                     vm.apiHotels = hotels;
+                    vm.hotelReq.location = findCityName(vm.hotelLoc);
                     HotelService
                         .getRegisteredHotels(vm.hotelReq)
                         .success(function (hotels) {
@@ -52,6 +54,26 @@
             request.send();
 
         }
+
+        function findCityName(cityCode) {
+            if (vm.allCities) {
+                var city = vm.allCities.filter(function (item) {
+                    return item.code === cityCode;
+                });
+                if (city.length > 0) {
+                    return city[0].name;
+                } else {
+                    findAllAirportCodeArray();
+                    if (vm.allAirports) {
+                        var Airport = vm.allAirports.filter(function (item) {
+                            return item.code === cityCode;
+                        });
+                        return Airport[0].name;
+                    }
+                }
+            }
+        }
+
 
         function findAllAirportCodeArray() {
             // Create a new XMLHttpRequest.
