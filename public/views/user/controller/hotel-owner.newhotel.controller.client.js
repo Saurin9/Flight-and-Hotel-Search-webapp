@@ -3,26 +3,45 @@
         .module("FlightSearchApp")
         .controller("NewHotelController", NewHotelController);
 
-    function NewHotelController($routeParams, $location, HotelService) {
+    function NewHotelController($routeParams, $location, HotelService, UserService) {
         var vm = this;
-        var userId = $routeParams['uid'];
+        var userId;
 
         vm.goToHotelsList = goToHotelsList;
         vm.goToHotelOwnerProfile = goToHotelOwnerProfile;
         vm.addHotel = addHotel;
+        vm.logout = logout;
 
         function init() {
-            findAllCityCodeArray();
+            UserService
+                .findCurrentUser()
+                .success(function (user) {
+                    userId = user._id;
+                    vm.user = user;
+                    vm.userType = user.userType;
+                    findAllCityCodeArray();
+                });
+
         }
         init();
 
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
+        }
+
         
         function goToHotelOwnerProfile() {
-            $location.url('/user-hotelowner/' + userId);
+            $location.url('/user-hotelowner/profile');
         }
 
         function goToHotelsList() {
-            $location.url('/user-hotelowner/' + userId +'/hotel');
+            $location.url('/user-hotelowner/hotel');
         }
 
         function addHotel(newhotel) {
