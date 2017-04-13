@@ -22,28 +22,35 @@
         init();
 
         function registerUser(newUser) {
-            newUser.passwordRecoveryQuestion = vm.questionOptions.passwordRecoveryQuestion.name;
-            newUser.userType = vm.userType;
-            if (newUser.password === newUser.verify.password) {
-                UserService
-                    .findUserByUsername(newUser.username)
-                    .success(function (user) {
-                        vm.error = 'Username already exists'
-                    })
-                    .error(function () {
-                        UserService
-                            .createUser(newUser)
-                            .success(function (user) {
-                                if(user.userType === "HOTELOWNER"){
-                                    $location.url('/user-hotelowner/profile');
-                                }
-                                else
-                                    $location.url("/user/profile");
-                            });
-                    });
-            } else {
-                vm.error = "passwords do not match";
+            if(vm.userType != "ADMIN"){
+                newUser.passwordRecoveryQuestion = vm.questionOptions.passwordRecoveryQuestion.name;
+                newUser.userType = vm.userType;
+                if (newUser.password === newUser.verify.password) {
+                    UserService
+                        .findUserByUsername(newUser.username)
+                        .success(function (user) {
+                            vm.error = 'Username already exists'
+                        })
+                        .error(function () {
+                            UserService
+                                .createUser(newUser)
+                                .success(function (user) {
+                                    if(user.userType === "HOTELOWNER"){
+                                        $location.url('/user-hotelowner/profile');
+                                    }
+                                    else
+                                        $location.url("/user/profile");
+                                });
+                        });
+                } else {
+                    vm.error = "passwords do not match";
+                }
+            }
+            else{
+                vm.error = 'Access Denied !!';
             }
         }
+
+
     }
 })();
