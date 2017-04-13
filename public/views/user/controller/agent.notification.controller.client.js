@@ -15,6 +15,7 @@
         vm.goToProfile = goToProfile;
         vm.goToAgentHistory = goToAgentHistory;
         vm.logout = logout;
+        vm.goToHotelSearch = goToHotelSearch;
 
 
         function init() {
@@ -107,6 +108,10 @@
 
         function clearFilterAlerts() {
             vm.alerts = angular.copy(vm.alertsBackup);
+        }
+
+        function goToHotelSearch() {
+            $location.url("/user/hotelSearch");
         }
 
         function filterAlerts(alertFilter) {

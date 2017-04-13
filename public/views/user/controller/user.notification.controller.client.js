@@ -12,6 +12,7 @@
         vm.goToProfile = goToProfile;
         vm.goToUserHistory = goToUserHistory;
         vm.logout = logout;
+        vm.goToHotelSearch = goToHotelSearch;
 
         function init() {
             UserService
@@ -54,6 +55,10 @@
 
         function goToFlightSearch() {
             $location.url("/user/flightSearch");
+        }
+
+        function goToHotelSearch() {
+            $location.url("/user/hotelSearch");
         }
 
         function goToProfile() {

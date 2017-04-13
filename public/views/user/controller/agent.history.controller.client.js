@@ -12,6 +12,7 @@
         vm.goToProfile = goToProfile;
         vm.goToAgentNotification = goToAgentNotification;
         vm.logout = logout;
+        vm.goToHotelSearch = goToHotelSearch;
 
 
         function init() {
@@ -44,6 +45,10 @@
 
         function goToFlightSearch() {
             $location.url("user/flightSearch");
+        }
+
+        function goToHotelSearch() {
+            $location.url("/user/hotelSearch");
         }
 
         function deleteMessageFromHistory(message) {
