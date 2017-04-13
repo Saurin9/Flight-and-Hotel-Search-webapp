@@ -3,6 +3,7 @@ module.exports = function () {
     var mongoose = require("mongoose");
     var UserSchema = require("./user.schema.server.js")();
     var UserModel = mongoose.model("NewUserModel", UserSchema);
+    var bcrypt = require("bcrypt-nodejs");
 
     var Q = require("q");
 
@@ -16,9 +17,23 @@ module.exports = function () {
         finAllUsers : finAllUsers,
         deleteUser : deleteUser,
         findUserByRecoveryCredentials: findUserByRecoveryCredentials,
-        findSecurityQuestionByUsername: findSecurityQuestionByUsername
+        findSecurityQuestionByUsername: findSecurityQuestionByUsername,
+        findUserByGoogleId : findUserByGoogleId
     };
     return api;
+
+    function findUserByGoogleId(profileId) {
+        var deferred = Q.defer();
+        UserModel
+            .findOne({'google.id' : profileId}, function (err, user) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
 
     function findUserByRecoveryCredentials(username, passwordRecoveryAnswer) {
         var deferred = Q.defer();
@@ -210,6 +225,7 @@ module.exports = function () {
 
 
     function createUser(user) {
+        user.password = bcrypt.hashSync(user.password);
         var deferred = Q.defer();
         UserModel
             .create(user, function (err, user) {
@@ -260,6 +276,7 @@ module.exports = function () {
             });
         return deferred.promise;
     }
+
 
 
     function setModel(_model) {

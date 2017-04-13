@@ -9,6 +9,7 @@
         vm.goToOwnerRegisterPage = goToOwnerRegisterPage;
         vm.goToHistory = goToHistory;
         vm.goToRegister = goToRegister;
+        vm.goToFlightSearch = goToFlightSearch;
 
         function init () {
 
@@ -85,6 +86,14 @@
                 $location.url("/user/userHistory");
             } else if (vm.userType === "AGENT") {
                 $location.url("/user/agentHistory");
+            }
+        }
+
+        function goToFlightSearch() {
+            if (vm.isLoggedIn) {
+                $location.url("/user/flightSearch");
+            } else {
+                $location.url("/");
             }
         }
     }

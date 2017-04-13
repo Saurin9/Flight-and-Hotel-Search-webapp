@@ -25,6 +25,8 @@
         vm.goToProfile = goToProfile;
         vm.findCityName = findCityName;
         vm.findAllAirportCodeArray = findAllAirportCodeArray;
+        vm.logout = logout;
+        vm.goToHotelSearch = goToHotelSearch;
 
         function init() {
 
@@ -129,7 +131,11 @@
 
 
         function goToFlightSearch() {
-            $location.url("/user/flightSearch");
+            if (vm.isUserLoggedIn) {
+                $location.url("/user/flightSearch");
+            } else {
+                $location.url("/");
+            }
         }
 
         function goToNotifications() {
@@ -183,6 +189,24 @@
         function getOnlyDate(time) {
             if (typeof time != "undefined") {
                 return time.split("T")[1];
+            }
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
+        }
+
+        function goToHotelSearch() {
+            if (vm.isUserLoggedIn) {
+                $location.url("/user/hotelSearch");
+            } else {
+                $location.url("/hotelSearch");
             }
         }
     }

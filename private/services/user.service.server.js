@@ -10,29 +10,86 @@ module.exports = function (app, model) {
     app.post("/api/checkLogin", checkLogin);
     app.post("/api/logout", logout);
     app.get("/api/findCurrentUser",findCurrentUser);
+    app.post("/api/login/recovery", loginWithRecovery);
 
 
-
+    var bcrypt = require("bcrypt-nodejs");
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
+    var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+    app.get('/auth/google/callback',
+        passport.authenticate('google', {
+            successRedirect: '/#/user/flightSearch',
+            failureRedirect: '/#/login'
+        }));
 
     app.post('/api/login', passport.authenticate('local'), login);
 
     function localStrategy(username, password, done) {
         model
             .userModel
-            .findUserByCredentials(username, password)
+            .findUserByUsername(username)
             .then(
                 function(user) {
                     if (!user) {
                         return done(null, false);
+                    } else if (user && bcrypt.compareSync(password, user.password)) {
+                        return done(null, user);
                     }
-                    return done(null, user);
                 },
                 function(err) {
+                    if (err) { return done(err); }
+                }
+            );
+    }
+
+    var googleConfig = {
+        clientID     : process.env.CLIENT_ID,
+        clientSecret : process.env.CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL
+    };
+
+    passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
+    function googleStrategy(token, refreshToken, profile, done) {
+        model
+            .userModel
+            .findUserByGoogleId(profile.id)
+            .then(
+                function(user) {
+                    if(user) {
+                        return done(null, user);
+                    } else {
+                        var email = profile.emails[0].value;
+                        var emailParts = email.split("@");
+                        var newGoogleUser = {
+                            username:  emailParts[0],
+                            firstName: profile.name.givenName,
+                            lastName:  profile.name.familyName,
+                            email:     email,
+                            google: {
+                                id:    profile.id,
+                                token: token
+                            },
+                            userType : 'USER'
+                        };
+                        return model.userModel.createUser(newGoogleUser);
+                    }
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            )
+            .then(
+                function(user){
+                    return done(null, user);
+                },
+                function(err){
                     if (err) { return done(err); }
                 }
             );
@@ -65,9 +122,6 @@ module.exports = function (app, model) {
                 }
             );
     }
-
-
-
 
 
     function findCurrentUser(req, res) {
@@ -224,19 +278,29 @@ module.exports = function (app, model) {
     }
 
     function findUserByRecoveryCredentials(req, res) {
-        var username = req.query.username;
-        var passwordRecoveryAnswer = req.query.passwordRecoveryAnswer;
+        var user = req.body;
+        var username = user.username;
+        var passwordRecoveryAnswer = user.passwordRecoveryAnswer;
         model
             .userModel
             .findUserByRecoveryCredentials(username, passwordRecoveryAnswer)
             .then(
                 function (user) {
-                    res.send(user);
+                    req.login(user, function (err) {
+                        res.send(user);
+                    });
                 },
                 function (err) {
                     res.sendStatus(400).send(err);
                 }
             );
+    }
+
+    function loginWithRecovery(req, res) {
+        var user = req.body;
+        if (user.username && user.passwordRecoveryAnswer){
+            findUserByRecoveryCredentials(req,res);
+        }
     }
 
 

@@ -59,16 +59,6 @@
         }
         init();
 
-        function logout() {
-            UserService
-                .logout()
-                .then(
-                    function () {
-                        $location.url("/");
-                    }
-                );
-        }
-
         
         function goToHotelOwnerProfile() {
             $location.url('/user-hotelowner/profile');
@@ -79,7 +69,7 @@
         }
 
         function addHotel(newhotel) {
-            
+            newhotel.username = vm.user.firstName + " " + vm.user.lastName;
             HotelService
                 .addHotel(newhotel, userId)
                 .success(function (hotel) {
@@ -87,6 +77,16 @@
                         $location.url('/user-hotelowner/hotel');
                     }
                 })
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
         }
 
         function findAllCityCodeArray() {
