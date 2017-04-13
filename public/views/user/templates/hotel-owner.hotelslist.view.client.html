@@ -164,12 +164,12 @@
                             <div class="col-xs-5 col-sm-3 text-center">
                                 Checkout Dates
                             </div>
-                            <div class="col-xs-2 col-sm-3 pull-left">
-                                <a class="visible-xs" data-toggle="collapse" data-target="#hotelDetails{{$index}}">
-                                    <div class="pull-left">
-                                    <span class="ss-arrow-bottom-padding">
-                                        <i class="fa fa-plus-circle pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>
-                                    </span>
+                            <div class="col-xs-2 col-sm-3 ss-plus-alignment">
+                                <a class="visible-xs ss-plus-alignment" data-toggle="collapse" data-target="#hotelDetails{{$index}}">
+                                    <div class="ss-plus-alignment pull-left">
+                                        <span class="ss-arrow-bottom-padding ss-plus-alignment">
+                                            <i class="fa fa-plus-circle ss-white-font ss-cross-font-size ss-plus-alignment" aria-hidden="true"></i>
+                                        </span>
                                     </div>
                                 </a>
 
@@ -183,6 +183,10 @@
                             </div>
                             <div class="col-sm-1"></div>
                         </div>
+
+                        <!--<div class="text-center alert-info" ng-if="hotel.BookedDates">-->
+                            <!--No bookings currently !-->
+                        <!--</div>-->
 
                         <div ng-repeat="booking in hotel.BookedDates" class="row ss-white-font ss-font-class2">
                             <div class="col-sm-2"></div>

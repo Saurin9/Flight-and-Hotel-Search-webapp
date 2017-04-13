@@ -60,12 +60,13 @@ module.exports = function () {
     }
 
     function findHotelById (hotelId) {
+        console.log("hotem model"+hotelId);
         var deferred = Q.defer();
         // console.log(hotelId);
         HotelModel
             .findOne({"_id": hotelId}, function (err, hotel) {
                 if(err){
-                    deferred.abort();
+                    deferred.reject();
                 }
                 else{
                     deferred.resolve(hotel);

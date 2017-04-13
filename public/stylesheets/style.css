@@ -699,3 +699,7 @@ a.hover {
 .ss-black-font{
     color: black;
 }
+
+.ss-plus-alignment{
+    float: right;
+}

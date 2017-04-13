@@ -46,15 +46,19 @@
         }
 
         function gotoEditHotelPage (hotelId) {
-            $location.url('/user-hotelowner/hotel/' + hotelId);
+            hotelIdObject = {_id : hotelId} ;
+            HotelService
+                .saveHotelIdOnServer(hotelIdObject)
+                .success(function (boolean) {
+                    $location.url('/user-hotelowner/hotel/edit');
+                })
+
         }
 
         function updateHotelAvailibility (editedDetails, hotelId) {
 
             var bookingDate = {checkIn : editedDetails.checkIn.toISOString().substring(0,10),
                 checkOut : editedDetails.checkOut.toISOString().substring(0,10)};
-            console.log(bookingDate);
-            console.log(hotelId);
             HotelService
                 .updateHotelAvailibility(bookingDate, hotelId)
                 .success(function (hotel) {

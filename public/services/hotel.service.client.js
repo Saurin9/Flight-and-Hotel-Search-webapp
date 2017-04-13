@@ -18,10 +18,22 @@
             "deleteHotel": deleteHotel,
             "getRegisteredHotels" : getRegisteredHotels,
             "findHotelById": findHotelById,
-            "updateHotel": updateHotel
+            "updateHotel": updateHotel,
+            "saveHotelIdOnServer": saveHotelIdOnServer,
+            "getHotelId": getHotelId
             // "getHotelSearchUrl": getHotelSearchUrl
         };
         return api;
+
+        function saveHotelIdOnServer(hotelIdObject){
+            console.log('In client service store' + hotelIdObject._id);
+            return $http.post('/api/hotel/saveId', hotelIdObject);
+        }
+
+        function getHotelId () {
+            console.log('In client service retrieve');
+            return $http.get('/api/hotel/getid');
+        }
 
         function findHotelById (hotelId) {
             return $http.get('/api/hotel/' + hotelId);

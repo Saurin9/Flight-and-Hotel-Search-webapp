@@ -28,8 +28,11 @@
     </div>
 </nav>
 
-    <div class="alert alert-danger text-center" ng-show="model.error">
-        {{model.error}}
+    <div class="bs-example" ng-show="model.error">
+        <div class="alert alert-danger text-center fade in">
+            <a href="#/register/USER" class="close" data-dismiss="alert">×</a>
+            <strong>{{model.error}}</strong>
+        </div>
     </div>
 
 <div class="container-fluid wbdv-margin-top">
