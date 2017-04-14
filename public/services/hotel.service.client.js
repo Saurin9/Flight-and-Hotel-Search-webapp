@@ -5,7 +5,7 @@
 
     function HotelService($http) {
 
-        var ss_API_KEY = "5NPbEYxDOHBtMEMVCrAYRZuqqOVygdgv";
+        var ss_API_KEY = process.env.HOTEL_KEY;
         var hotel_urlbase = "https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=" + ss_API_KEY +
             "&location=LOCATION_REQ&check_in=CHECKIN_REQ&check_out=CHECKOUT_REQ"
 

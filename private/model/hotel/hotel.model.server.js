@@ -24,7 +24,7 @@ module.exports = function () {
         HotelModel
             .find({}, function (err, hotels) {
                 if (err) {
-                    deferred.abort(err);
+                    deferred.reject(err);
                 } else {
                     deferred.resolve(hotels);
                 }
@@ -51,7 +51,7 @@ module.exports = function () {
                 amenities: hotel.amenities,
                 total_price: hotel.total_price}, function (err, hotel) {
                 if(err){
-                    deferred.abort(err);
+                    deferred.reject(err);
                 } else{
                     deferred.resolve(hotel);
                 }
@@ -83,7 +83,7 @@ module.exports = function () {
         HotelModel
             .find({},function (err, hotels) {
                 if(err){
-                    deferred.abort(err);
+                    deferred.reject(err);
                 }else{
                     var availableHotels = [];
                     for(var i=0; i<hotels.length; i++){
@@ -125,7 +125,7 @@ module.exports = function () {
         HotelModel
             .create(hotel, function (err, hotel) {
                 if(err){
-                    deferred.abort(err);
+                    deferred.reject(err);
                 }else{
                     deferred.resolve(hotel);
                 }
@@ -138,7 +138,7 @@ module.exports = function () {
         HotelModel
             .find({"_user": userId}, function (err, hotels) {
                 if (err) {
-                    deferred.abort(err);
+                    deferred.reject(err);
                 } else {
                     deferred.resolve(hotels);
                 }
@@ -151,7 +151,7 @@ module.exports = function () {
         HotelModel
             .update({"_id": hotelId}, {$push : {BookedDates : bookingDates}}, function (err, hotel) {
                 if(err){
-                    deferred.abort(err);
+                    deferred.reject(err);
                 } else {
                     deferred.resolve(hotel);
                 }
@@ -164,7 +164,7 @@ module.exports = function () {
         HotelModel
             .remove({_id: hotelId}, function (err, hotel) {
                 if(err){
-                    deferred.abort(err);
+                    deferred.reject(err);
                 } else{
                     deferred.resolve(hotel);
                 }
