@@ -8,9 +8,11 @@
         var userType = $routeParams['userType'];
 
         vm.registerUser = registerUser;
+        // vm.closeAlertBox = closeAlertBox;
 
         function init() {
             vm.userType = userType;
+            // vm.showErrorBox = false;
 
             vm.questionOptions = {availableQuestions : [{id : '1',name :'What is your birth city?'},
                 {id : '2',name :'What is your mother\'s maiden name?'},
@@ -29,7 +31,8 @@
                     UserService
                         .findUserByUsername(newUser.username)
                         .success(function (user) {
-                            vm.error = 'Username already exists'
+                            vm.error = 'Username already exists';
+                            vm.showErrorBox = true;
                         })
                         .error(function () {
                             UserService
@@ -43,13 +46,22 @@
                                 });
                         });
                 } else {
-                    vm.error = "passwords do not match";
+                    vm.error = "Passwords do not match";
+                    vm.showErrorBox = true;
                 }
             }
             else{
                 vm.error = 'Access Denied !!';
+                vm.showErrorBox = true;
             }
         }
+
+
+        // function closeAlertBox () {
+        //     console.log('in close alert box');
+        //     vm.showErrorBox = false;
+        //     // $location.url("/register/" + vm.userType);
+        // }
 
 
     }

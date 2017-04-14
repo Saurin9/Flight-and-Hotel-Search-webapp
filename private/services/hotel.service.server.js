@@ -46,6 +46,7 @@ module.exports = function (app, model) {
         var hotel = req.body;
         console.log(hotelId);
         console.log(hotel);
+
         model
             .hotelModel
             .updateHotel(hotelId, hotel)

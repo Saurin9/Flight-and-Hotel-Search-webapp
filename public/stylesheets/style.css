@@ -311,6 +311,10 @@ a:hover, a:focus {
     color: white;
 }
 
+.ss-hotel-name-color {
+    color: orangered;
+}
+
 .wbdv-margin-top {
     margin-top: 20px;
 }
@@ -482,6 +486,20 @@ a {
     min-height: 100%;
 }
 
+.rc-background-hotelList {
+    background: url("/images/pexels-photo-338504.jpeg");
+    background-size: cover;
+    /*background-position: 100%;*/
+    /*background:repeat;*/
+    position: absolute;
+    /*height: 100vh;*/
+    top:0;
+    left:0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+
 .ss-top-padding{
     padding-top: 0px;
 }
@@ -605,7 +623,7 @@ a.hover {
 }
 
 .ss-hotel-name-font-size{
-    font-size: 23px;
+    font-size: 27px;
 }
 
 .ss-div-padding{
@@ -646,7 +664,26 @@ a.hover {
 .ss-cross-font-size{
     font-size: 20px !important;
     padding: 5px;
+    padding-top: 12px;
+    color: orangered;
 }
+
+.ss-cross-font-size2{
+    font-size: 25px !important;
+    padding: 2px;
+    padding-right: 5px;
+    padding-top: 9px;
+}
+
+.ss-black-bg-high-hotelList {
+    opacity: 0.8;
+}
+
+.ss-btn-font{
+    font-size: 16px;
+}
+
+
 
 .ss-pencil-font-size{
     font-size: 14px !important;
@@ -692,6 +729,14 @@ a.hover {
     padding: 20px;
 }
 
+.ss-red-button {
+    color: red;
+}
+
+.ss-left-padding-hotel-name {
+    padding-left: 25px;
+}
+
 .rc-no-message-padding {
     padding: 10px;
 }
@@ -702,4 +747,18 @@ a.hover {
 
 .ss-plus-alignment{
     float: right;
+    padding: 5px;
+    padding-bottom: 0px;
+}
+
+.ss-cross-font-size3{
+    font-size: 20px !important;
+    color: orangered;
+    padding-right: 10px;
+}
+
+hr{
+    background-color: orangered;
+    height: 1px;
+    border: 0;
 }
