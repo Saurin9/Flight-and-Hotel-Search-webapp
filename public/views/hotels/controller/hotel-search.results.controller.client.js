@@ -35,18 +35,20 @@
             vm.hotelReq = {"location": vm.hotelLoc, "checkinDate": vm.cinDate, "checkoutDate": vm.coutDate};
 
             HotelService
-                .getHotels(vm.hotelReq)
-                .success(function (hotels) {
-                    vm.apiHotels = hotels;
-                    vm.hotelReq.location = findCityName(vm.hotelLoc);
+                .getAPIKEY()
+                .success(function (API_KEY) {
                     HotelService
-                        .getRegisteredHotels(vm.hotelReq)
+                        .getHotels(vm.hotelReq, API_KEY)
                         .success(function (hotels) {
-                            vm.registeredHotels = hotels;
+                            vm.apiHotels = hotels;
+                            vm.hotelReq.location = findCityName(vm.hotelLoc);
+                            HotelService
+                                .getRegisteredHotels(vm.hotelReq)
+                                .success(function (hotels) {
+                                    vm.registeredHotels = hotels;
+                                });
                         });
                 });
-
-
         }
         init();
 
