@@ -14,6 +14,7 @@
         vm.goToNotifications = goToNotifications;
         vm.AreYouSure = AreYouSure;
         vm.logout = logout;
+        vm.goToHotelSearch = goToHotelSearch;
 
         function init() {
             UserService
@@ -26,6 +27,10 @@
                 });
         }
         init();
+
+        function goToHotelSearch() {
+            $location.url("/user/hotelSearch");
+        }
 
         function logout() {
             UserService
