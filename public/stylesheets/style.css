@@ -762,3 +762,7 @@ hr{
     height: 1px;
     border: 0;
 }
+
+.ss-box-padding{
+    margin-top: 10px;
+}
