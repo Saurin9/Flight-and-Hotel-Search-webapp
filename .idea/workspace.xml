@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="201a398e-d960-4060-a30b-25f5357a723c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/flights/templates/search.view.client.html" afterPath="$PROJECT_DIR$/public/views/flights/templates/search.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/hotels/controller/hotel-search.results.controller.client.js" afterPath="$PROJECT_DIR$/public/views/hotels/controller/hotel-search.results.controller.client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/user/controller/agent.notification.controller.client.js" afterPath="$PROJECT_DIR$/public/views/user/controller/agent.notification.controller.client.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,21 +21,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="hotel-owner.profile.controller.client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/views/user/controller/hotel-owner.profile.controller.client.js">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+            <state relative-caret-position="502">
+              <caret line="766" column="14" lean-forward="false" selection-start-line="766" selection-start-column="14" selection-end-line="766" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+      <file leaf-file-name="agent.notification.controller.client.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/views/user/controller/agent.notification.controller.client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="766" column="14" lean-forward="false" selection-start-line="766" selection-start-column="14" selection-end-line="766" selection-end-column="14" />
+            <state relative-caret-position="288">
+              <caret line="38" column="35" lean-forward="false" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -113,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hotel-search.view.client.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/views/hotels/templates/hotel-search.view.client.html">
+      <file leaf-file-name="hotel-owner.profile.controller.client.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/views/user/controller/hotel-owner.profile.controller.client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="61" column="30" lean-forward="true" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
+            <state relative-caret-position="342">
+              <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -193,7 +191,6 @@
         <option value="$PROJECT_DIR$/public/views/user/templates/user.history.view.client.html" />
         <option value="$PROJECT_DIR$/public/views/user/templates/user.notification.view.client.html" />
         <option value="$PROJECT_DIR$/public/views/user/templates/agent.history.view.client.html" />
-        <option value="$PROJECT_DIR$/public/views/user/controller/agent.notification.controller.client.js" />
         <option value="$PROJECT_DIR$/public/views/user/controller/agent.history.controller.client.js" />
         <option value="$PROJECT_DIR$/public/views/user/templates/agent.notification.view.client.html" />
         <option value="$PROJECT_DIR$/public/config.js" />
@@ -224,6 +221,7 @@
         <option value="$PROJECT_DIR$/public/views/hotels/controller/hotel-search.results.controller.client.js" />
         <option value="$PROJECT_DIR$/public/views/flights/templates/search.view.client.html" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/public/views/user/controller/agent.notification.controller.client.js" />
       </list>
     </option>
   </component>
@@ -720,12 +718,12 @@
       <workItem from="1492062351692" duration="1742000" />
       <workItem from="1492070482241" duration="46245000" />
       <workItem from="1492162624789" duration="5494000" />
-      <workItem from="1492213487778" duration="1910000" />
+      <workItem from="1492213487778" duration="2510000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155541000" />
+    <option name="totallyTimeSpent" value="156141000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -849,6 +847,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2034">
           <caret line="113" column="21" lean-forward="true" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -856,6 +855,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
           <caret line="56" column="23" lean-forward="false" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -971,13 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/user/controller/agent.notification.controller.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/user/controller/hotel-owner.edithotel.controller.client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1056,14 +1049,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/user/controller/hotel-owner.profile.controller.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/hotels/templates/hotel-search.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1132,6 +1117,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="502">
           <caret line="766" column="14" lean-forward="false" selection-start-line="766" selection-start-column="14" selection-end-line="766" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/user/controller/agent.notification.controller.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="38" column="35" lean-forward="false" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/user/controller/hotel-owner.profile.controller.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
           <folding />
         </state>
       </provider>
